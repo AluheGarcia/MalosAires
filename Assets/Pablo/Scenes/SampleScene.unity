@@ -522,6 +522,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &493401840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493401841}
+  m_Layer: 0
+  m_Name: orientation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493401841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493401840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 800695760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &518061226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,6 +705,7 @@ Transform:
   - {fileID: 330585546}
   - {fileID: 50669580}
   - {fileID: 1620369671}
+  - {fileID: 493401841}
   m_Father: {fileID: 1544541679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &800695761
@@ -1145,11 +1177,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544541676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25433925b3b507d4d9aba96d0fb66d4d, type: 3}
+  m_Script: {fileID: 11500000, guid: a6b74475484322c40a7515276f0570bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _rotationSpeed: 50
+  moveSpeed: 4
+  groundDrag: 3
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  orientation: {fileID: 493401841}
 --- !u!4 &1544541679
 Transform:
   m_ObjectHideFlags: 0
