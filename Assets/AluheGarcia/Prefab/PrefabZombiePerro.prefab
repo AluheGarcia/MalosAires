@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6858431036064490599}
   - component: {fileID: 568417384308959308}
   m_Layer: 0
-  m_Name: 'PrefabZombieNormal2 '
+  m_Name: PrefabZombiePerro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +108,8 @@ Transform:
   m_GameObject: {fileID: 2753964896136918619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.3125, y: 3.864, z: -69.523}
-  m_LocalScale: {x: 1.5282, y: 1.628, z: 1.6126}
+  m_LocalPosition: {x: 19.693, y: 4.0678, z: -44.440727}
+  m_LocalScale: {x: 1.1905137, y: 1.268261, z: 1.2562639}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5631181637196930653}
