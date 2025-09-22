@@ -4,24 +4,21 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - CinemachineTarget
   - Mate
-  - Enemy
   - Knife
-  - Bandage
-  - Bullets
-  - RightHand
-  - Gun
+  - melee
+  - Bullet
+  - enemie
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Item
+  - 
   - Water
   - UI
   - 
   - 
-  - 
+  - WhatIsGround
   - 
   - 
   - 
