@@ -4,6 +4,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] int health = 3;
+    public int phealth => health;
 
 
 

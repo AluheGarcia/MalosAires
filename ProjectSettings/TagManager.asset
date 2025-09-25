@@ -9,14 +9,19 @@ TagManager:
   - melee
   - Bullet
   - enemie
+  - Bandage
+  - Bullets
+  - RightHand
+  - Gun
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
-  - 
+  - Player
   - 
   - WhatIsGround
   - 
