@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             player.GetComponent<PlayerHealth>().TakeDamage();
-            Debug.Log("Daño al player");
+            Debug.Log("Daï¿½o al player");
         }
     }
 
