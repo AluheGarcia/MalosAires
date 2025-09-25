@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class LifeCountScript : MonoBehaviour
 {
-    [SerializeField] private HealthBarScrpt Health;
-    [SerializeField] private InventoryBehaviour PlayerLifes;
+    //[SerializeField] private HealthBarScrpt Health;
+    [SerializeField] private PlayerLife PlayerLifes;
 
     [SerializeField] private GameObject [] LifeIcons;
     [SerializeField] private int Lifes;
+
+    [SerializeField] private GameObject DefeatScreen;
+
      public int life => Lifes;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,11 +23,16 @@ public class LifeCountScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (PlayerLifes.playerLife <= 0 && Lifes > 0)
+       if (PlayerLifes.hitsSuported <= 0 && Lifes > 0)
         {
             LoseLife();
         }
         LivesUI();
+
+        if (Lifes == 0)
+        {
+            Dead();
+        }
     }
 
     private void LivesUI()
@@ -40,14 +49,33 @@ public class LifeCountScript : MonoBehaviour
         Lifes--;
         Debug.Log($"El jugador perdio una vida. Vidas restantes: {Lifes}");
 
-        if ( Lifes > 0 )
+        if ( Lifes > 0 && PlayerLifes.hitsSuported <= 0)
         {
-            PlayerLifes.ResetHealth();
+            PlayerLifes.ResetHits();
         }
         else
         {
             Debug.Log("SinVidas");
         }
+    }
+
+    public void Dead()
+    {
+             DefeatScreen.SetActive(true);
+            Time.timeScale = 0;        
+
+    }
+    public void ContinueGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Nivel 1");
+
+    }
+
+    public void ExitMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Inicio");
     }
 
 }
