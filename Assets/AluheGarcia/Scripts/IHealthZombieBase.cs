@@ -4,6 +4,7 @@ using UnityEngine;
 public interface IHealthZombieBase
 {
     int Health{ get; set; }
-    void TakeDamage();
+    void TakeMeleeDamage();
+    void TakeRangeDamage();
     void Death();
 }
