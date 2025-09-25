@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class LifeCountScript : MonoBehaviour
 {
-    //[SerializeField] private HealthBarScrpt Health;
+    
     [SerializeField] private PlayerLife PlayerLifes;
 
     [SerializeField] private GameObject [] LifeIcons;
@@ -16,6 +16,8 @@ public class LifeCountScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1f;
+        DefeatScreen.SetActive(false);
         Lifes = 3;         
         LivesUI();
     }
@@ -29,9 +31,14 @@ public class LifeCountScript : MonoBehaviour
         }
         LivesUI();
 
-        if (Lifes == 0)
+        if (Lifes <= 0)
         {
-            Dead();
+
+            DefeatScreen.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
         }
     }
 
@@ -59,23 +66,20 @@ public class LifeCountScript : MonoBehaviour
         }
     }
 
-    public void Dead()
-    {
-             DefeatScreen.SetActive(true);
-            Time.timeScale = 0;        
-
-    }
+  
     public void ContinueGame()
     {
+        //string currentLevel = 
+        Debug.Log("Continuar juego");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Nivel 1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 
     public void ExitMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Inicio");
+        SceneManager.LoadScene("Menu Inicio");
     }
 
 }
