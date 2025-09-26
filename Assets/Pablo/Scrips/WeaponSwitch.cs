@@ -9,7 +9,7 @@ public class WeaponSwitch : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             weapon++;
         }
