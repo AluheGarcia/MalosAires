@@ -21,9 +21,9 @@ public class ZombieBaseMovement : MonoBehaviour
     }
 
     // Este método es llamado por el área de detección para iniciar el ataque.
-    public void StartAttacking(GameObject Player)
+    public void StartAttacking(GameObject player)
     {
-        playerTarget = Player.transform;
+        playerTarget = player.transform;
         isAttacking = true;
         Debug.Log(gameObject.name + " ha sido notificado y ahora está atacando.");
     }
