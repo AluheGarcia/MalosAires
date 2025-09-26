@@ -77,7 +77,7 @@ public class InventoryBehaviour : MonoBehaviour
                 foreach (Transform child in RightHand)
                     Destroy(child.gameObject);
 
-                //equippedItem = Instantiate(entry.Value.itemPrefab, RightHand.position, RightHand.rotation, RightHand);
+             
                 equippedItem = Instantiate(entry.Value.itemPrefab, RightHand);
                 equippedItem.transform.localPosition = Vector3.zero;
                 equippedItem.transform.localRotation = Quaternion.identity;

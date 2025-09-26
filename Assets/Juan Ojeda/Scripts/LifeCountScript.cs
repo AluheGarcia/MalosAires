@@ -47,7 +47,7 @@ public class LifeCountScript : MonoBehaviour
        
             for (int i = 0; i < LifeIcons.Length; i++)
             {
-                LifeIcons[i].SetActive(i < Lifes); // Activamos/desactivamos iconos de vida
+                LifeIcons[i].SetActive(i < Lifes); 
             }
     }
 
@@ -69,7 +69,7 @@ public class LifeCountScript : MonoBehaviour
   
     public void ContinueGame()
     {
-        //string currentLevel = 
+        
         Debug.Log("Continuar juego");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
