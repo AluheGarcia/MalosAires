@@ -92,8 +92,9 @@ GameObject:
   - component: {fileID: 2312132845345019854}
   - component: {fileID: 6858431036064490599}
   - component: {fileID: 568417384308959308}
+  - component: {fileID: 2933566986773733842}
   m_Layer: 0
-  m_Name: PrefabZombiePerro
+  m_Name: PrefabZombieDog
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +109,8 @@ Transform:
   m_GameObject: {fileID: 2753964896136918619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.693, y: 4.0678, z: -44.440727}
-  m_LocalScale: {x: 1.1905137, y: 1.268261, z: 1.2562639}
+  m_LocalPosition: {x: -31.3125, y: 3.864, z: -69.523}
+  m_LocalScale: {x: 1.5282, y: 1.628, z: 1.6126}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5631181637196930653}
@@ -181,6 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  MeleeDamage: 25
+  RangeDamage: 50
 --- !u!114 &5658691834690701542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +230,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2753964896136918619}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 03d338b53f5424749bc3c83b21f4bf71, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -288,6 +291,18 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2933566986773733842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2753964896136918619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6163844cc04104d88797c3a040dfac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3544826294866134966
 GameObject:
   m_ObjectHideFlags: 0

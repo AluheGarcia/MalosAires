@@ -365,13 +365,14 @@ GameObject:
   - component: {fileID: 6825061837362555151}
   - component: {fileID: 3466031990237798316}
   - component: {fileID: 6052027755858087372}
+  - component: {fileID: 4425989314039336125}
   - component: {fileID: 3518236724545654496}
   - component: {fileID: 2411817178869203132}
   - component: {fileID: 836432724687959228}
   - component: {fileID: 5468707576840946609}
   - component: {fileID: 8375707343729332522}
   m_Layer: 0
-  m_Name: PrefabZombieGrande
+  m_Name: PrefabZombieHuman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,6 +447,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4425989314039336125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721756323342980096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6163844cc04104d88797c3a040dfac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3518236724545654496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  MeleeDamage: 25
+  RangeDamage: 50
 --- !u!114 &2411817178869203132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,8 +508,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -505,7 +520,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7721756323342980096}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 03d338b53f5424749bc3c83b21f4bf71, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -531,7 +546,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -126,9 +126,10 @@ GameObject:
   - component: {fileID: 1236176350731159913}
   - component: {fileID: 8621051724473125380}
   - component: {fileID: 6074005435922707106}
+  - component: {fileID: 1108629257687240182}
   - component: {fileID: 7314583335034864919}
   m_Layer: 0
-  m_Name: PrefabZombieChico
+  m_Name: PrefabZombieSmall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6f56ea7a15fd9f46bc14ad40648d26a, type: 2}
+  - {fileID: 2100000, guid: c9e0b1ef858561e48ab736bef095009b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,7 +265,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7345928792769822729}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 03d338b53f5424749bc3c83b21f4bf71, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -280,6 +281,18 @@ CapsuleCollider:
   m_Height: 2.0338683
   m_Direction: 1
   m_Center: {x: 0.046813488, y: 0.0055236816, z: 0}
+--- !u!114 &1108629257687240182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345928792769822729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6163844cc04104d88797c3a040dfac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &7314583335034864919
 NavMeshAgent:
   m_ObjectHideFlags: 0
