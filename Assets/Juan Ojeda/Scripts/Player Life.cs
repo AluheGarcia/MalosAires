@@ -15,15 +15,18 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                
+        //if (QHitsSuported < 1)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            TakeHit();
-        }
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.gameObject.CompareTag("Enemy"))
+    //    {
+    //        TakeHit();
+    //    }
+    //}
 
     public void TakeHit ()
     {

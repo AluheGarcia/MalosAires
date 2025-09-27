@@ -10,6 +10,7 @@ public class LifeCountScript : MonoBehaviour
     [SerializeField] private int Lifes;
 
     [SerializeField] private GameObject DefeatScreen;
+    [SerializeField] private GameObject VictoryScreen;
 
      public int life => Lifes;
 
@@ -55,6 +56,8 @@ public class LifeCountScript : MonoBehaviour
     {
         Lifes--;
         Debug.Log($"El jugador perdio una vida. Vidas restantes: {Lifes}");
+
+        //Este codigo te saca una vida cada 3 hits, hay que arreglarlo
 
         if ( Lifes > 0 && PlayerLifes.hitsSuported <= 0)
         {

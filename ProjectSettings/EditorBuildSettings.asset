@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Pablo/Scenes/Level2_House.unity
     guid: becb349894f178c438421a5a68f2eb01
   - enabled: 1
-    path: Assets/FiinalScenes/SampleScene.unity
+    path: Assets/FiinalScenes/Level3_Streets.unity
     guid: 569ae82f71e15ed4a99e8fdf4ab50f0b
   - enabled: 0
     path: Assets/Juan Ojeda/Scenes/Escena Inventario.unity
