@@ -5,7 +5,7 @@ public class MenuTitle : MonoBehaviour
 {
     public void GameStart()
     {
-        SceneManager.LoadScene("Escena Inventario");
+        SceneManager.LoadScene("SubwayLineB");
     }
 
     public void ExitGame()
