@@ -9,7 +9,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            player.GetComponent<PlayerHealth>().TakeDamage();
+            player.GetComponent<PlayerLife>().TakeHit();
             Debug.Log("Da�o al player");
         }
     }

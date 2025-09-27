@@ -78,6 +78,7 @@ public class LifeCountScript : MonoBehaviour
 
     public void ExitMenu()
     {
+        Debug.Log("Salio al menu");
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu Inicio");
     }
