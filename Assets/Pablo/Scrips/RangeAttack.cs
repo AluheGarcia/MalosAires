@@ -8,6 +8,7 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private GameObject BulletDirection;
 
 
+
     private bool shot;
 
     private void Update()
