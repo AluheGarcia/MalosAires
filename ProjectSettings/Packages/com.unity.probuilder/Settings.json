@@ -84,7 +84,11 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
+<<<<<<< Updated upstream
                 "value": "{\"m_Value\":{\"x\":15.113805770874024,\"y\":1.3396036624908448,\"z\":-1.0251884460449219}}"
+=======
+                "value": "{\"m_Value\":{\"x\":-15.0341796875,\"y\":0.56695556640625,\"z\":20.43310546875}}"
+>>>>>>> Stashed changes
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
