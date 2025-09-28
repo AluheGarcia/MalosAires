@@ -5,7 +5,7 @@ public class MenuTitle : MonoBehaviour
 {
     public void GameStart()
     {
-        SceneManager.LoadScene("SubwayLineB");
+        SceneManager.LoadScene("Level1");
         Time.timeScale = 1f;
     }
 

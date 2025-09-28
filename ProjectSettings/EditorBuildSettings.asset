@@ -8,14 +8,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Juan Ojeda/Scenes/Menu Inicio.unity
     guid: 1c6f77f3e27487f4998aef9543a24797
-  - enabled: 1
+  - enabled: 0
     path: Assets/Matt/Scenes/SubwayLineB.unity
     guid: c9d2fa8569db43e49b19a329a7dc2292
   - enabled: 1
-    path: Assets/Pablo/Scenes/Level2_House.unity
-    guid: becb349894f178c438421a5a68f2eb01
+    path: Assets/FiinalScenes/Level1.unity
+    guid: 0a6a52cad8f596f43bbd9504e4196fc0
   - enabled: 1
-    path: Assets/FiinalScenes/Level3_Streets.unity
+    path: Assets/FiinalScenes/Level2.unity
+    guid: f85fe921e4173714195fb4dbc681966c
+  - enabled: 1
+    path: Assets/FiinalScenes/Level3.unity
     guid: 569ae82f71e15ed4a99e8fdf4ab50f0b
   - enabled: 0
     path: Assets/Juan Ojeda/Scenes/Escena Inventario.unity
