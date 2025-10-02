@@ -41,6 +41,11 @@ public class LifeCountScript : MonoBehaviour
             Cursor.visible = true;
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            RestoreLife();
+        }
     }
 
     private void LivesUI()
@@ -67,6 +72,19 @@ public class LifeCountScript : MonoBehaviour
         {
             Debug.Log("SinVidas");
         }
+    }
+
+    public void RestoreLife()
+    {
+       
+        if (Lifes < 3)
+        {
+            Lifes++;
+            Debug.Log($"El jugador recupero una vida. Vidas actuales: {Lifes}");
+        }
+
+        PlayerLifes.ResetHits();
+        LivesUI();
     }
 
   
