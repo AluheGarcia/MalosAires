@@ -11,14 +11,14 @@ public class EnemieCollision : MonoBehaviour
 
         if (colider.gameObject.CompareTag("melee"))
         {
-            GetComponent<EnemieHealth>().TakeMeleeDamage();
+            GetComponent<HealthManagerZombieBase>().TakeMeleeDamage();
             Debug.Log("Daño al enemigo");
         }
 
 
         if (colider.gameObject.CompareTag("Bullet"))
         {
-            GetComponent<EnemieHealth>().TakeRangeDamage();
+            GetComponent<HealthManagerZombieBase>().TakeRangeDamage();
             Debug.Log("Daño al enemigo");
 
             Destroy(colider.gameObject);
