@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class RangeAttack : MonoBehaviour
@@ -6,6 +7,7 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private GameObject Bullet;
 
     [SerializeField] private GameObject BulletDirection;
+
 
 
     private bool shot;
@@ -17,7 +19,7 @@ public class RangeAttack : MonoBehaviour
         if (shot == true)
         {
 
-            Instantiate(Bullet, BulletDirection.transform);
+            Instantiate(Bullet, BulletDirection.transform.position, BulletDirection.transform.rotation);
 
         }
 

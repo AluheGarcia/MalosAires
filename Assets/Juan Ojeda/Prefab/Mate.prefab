@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7062449334177467751}
   - component: {fileID: 428474739738526322}
   - component: {fileID: -2222838804219536871}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Mate
   m_TagString: Mate
   m_Icon: {fileID: 0}
@@ -153,5 +153,4 @@ MonoBehaviour:
   ItemPrefab: {fileID: 5526110482708239567}
   ItemName: Mate
   ItemSprite: {fileID: 21300000, guid: 7128f778e37d654499091b46663add63, type: 3}
-  RightHand: {fileID: 0}
   AssignKey: 51

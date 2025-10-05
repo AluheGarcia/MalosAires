@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class InventoryBehaviour : MonoBehaviour
 {
-    // Vida del jugador, solo para chequeo del slider de vida
-    [SerializeField] private float PlayerLife = 100f;
-        private float damage = 5f;
-    public float playerLife => PlayerLife;
-
+    
     // Script Del manejo de inventario 
     [SerializeField] private Transform RightHand;
     [SerializeField] private List<GameObject> ItemPrefabs;
@@ -36,12 +32,7 @@ public class InventoryBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Testeo de perdidad de salud
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerLife = PlayerLife - damage;
-        }
-
+    
         // Script valido
        
         ItemAddition ();
@@ -86,7 +77,10 @@ public class InventoryBehaviour : MonoBehaviour
                 foreach (Transform child in RightHand)
                     Destroy(child.gameObject);
 
-                equippedItem = Instantiate(entry.Value.itemPrefab, RightHand.position, RightHand.rotation, RightHand);
+             
+                equippedItem = Instantiate(entry.Value.itemPrefab, RightHand);
+                equippedItem.transform.localPosition = Vector3.zero;
+                equippedItem.transform.localRotation = Quaternion.identity;
                 Debug.Log($"Equipado: {entry.Value.itemPrefab.name}");
             }
         }
@@ -135,11 +129,5 @@ public class InventoryBehaviour : MonoBehaviour
         }
     }
 
-    // Esto es para el conteneo de vidas, es testeo
-
-    public void ResetHealth()
-    {
-        PlayerLife = 100f;
-    }
-
+  
 }

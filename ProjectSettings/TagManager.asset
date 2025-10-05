@@ -2,18 +2,29 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Mate
+  - Knife
+  - melee
+  - Bullet
+  - enemie
+  - Bandage
+  - Bullets
+  - RightHand
+  - Gun
+  - Enemy
+  - NextStage
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
+  - Player
   - 
-  - 
-  - 
+  - WhatIsGround
   - 
   - 
   - 
@@ -50,27 +61,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
