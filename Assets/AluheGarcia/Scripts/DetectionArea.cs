@@ -2,31 +2,27 @@ using UnityEngine;
 
 public class DetectionArea : MonoBehaviour
 {
-    private BoxCollider detectionCollider;
+    private SphereCollider detectionCollider;
     void Start()
     {
-        detectionCollider = GetComponent<BoxCollider>();
+        detectionCollider = GetComponent<SphereCollider>();
         if (detectionCollider == null)
         {
-            Debug.Log("no se encuentra un boxcollider");
+            Debug.Log("no se encuentra un SphereCollider");
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Jugador detectado! Buscando enemigos en el área de la caja.");
-
-            // Calcula el tamaño de la caja de búsqueda.
             // Usamos 'lossyScale' para obtener la escala global del objeto.
-            Vector3 searchHalfExtents = Vector3.Scale(detectionCollider.size, transform.lossyScale) / 2;
-
+            float radius = detectionCollider.radius * Mathf.Max(transform.lossyScale.x, transform.lossyScale.y, transform.lossyScale.z);
             // Realiza la detección con OverlapBox.
-            Collider[] hitColliders = Physics.OverlapBox(transform.position, searchHalfExtents, transform.rotation);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
 
             foreach (var hitCollider in hitColliders)
             {
-                ZombieBaseMovement enemy = hitCollider.GetComponent<ZombieBaseMovement>();
+                ZombieBaseMovement enemy = hitCollider.GetComponentInParent<ZombieBaseMovement>();
                 if (enemy != null)
                 {
                     enemy.StartAttacking(other.gameObject);
@@ -42,3 +38,4 @@ public class DetectionArea : MonoBehaviour
 
     }
 }
+

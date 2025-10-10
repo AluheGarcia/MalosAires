@@ -7,6 +7,7 @@ public class ZombieBaseMovement : MonoBehaviour
     private bool isAttacking;
     // Componente NavMeshAgent para el movimiento y la IA.
     private NavMeshAgent navMeshAgent;
+    public Animator animator;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class ZombieBaseMovement : MonoBehaviour
         playerTarget = player.transform;
         isAttacking = true;
         Debug.Log(gameObject.name + " ha sido notificado y ahora está atacando.");
+        animator.SetBool("DetectoEnemigo", true);
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class ZombieBaseMovement : MonoBehaviour
         {
             navMeshAgent.SetDestination(playerTarget.position);
         }
+        
     }
 }
 
