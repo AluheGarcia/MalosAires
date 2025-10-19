@@ -15,9 +15,7 @@ public class DetectionArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Usamos 'lossyScale' para obtener la escala global del objeto.
             float radius = detectionCollider.radius * Mathf.Max(transform.lossyScale.x, transform.lossyScale.y, transform.lossyScale.z);
-            // Realiza la detección con OverlapBox.
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
 
             foreach (var hitCollider in hitColliders)
@@ -29,13 +27,6 @@ public class DetectionArea : MonoBehaviour
                 }
             }
         }
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
 

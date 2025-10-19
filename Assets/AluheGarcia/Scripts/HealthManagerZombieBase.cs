@@ -13,17 +13,7 @@ public class HealthManagerZombieBase : MonoBehaviour, IHealthZombieBase
 
     private UnityEngine.AI.NavMeshAgent agent;
     public int Health { get { return health; } set { health = value; } }
-    //public void TakeMeleeDamage() { }
-    //public void TakeRangeDamage() { }
     public void Death() { }
-    //void Update()
-    //{
-    //    // --- SOLO PARA PRUEBA ---
-    //    if (Input.GetKeyDown(KeyCode.H))
-    //    {
-    //        TakeDamage(10);
-    //    }
-    //}
 
     void Awake()
     {
