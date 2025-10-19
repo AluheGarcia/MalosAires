@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5166273097797659347
+--- !u!1 &856829370383174938
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 155081855318471251}
-  - component: {fileID: 7271637883510834716}
-  - component: {fileID: 6975439719834211351}
-  - component: {fileID: 603980017106758806}
-  - component: {fileID: 3332113446065839290}
-  - component: {fileID: 3167650754652203760}
+  - component: {fileID: 7334187405257739043}
+  - component: {fileID: 1533861662490933216}
+  - component: {fileID: 42691191060851019}
+  - component: {fileID: 2402380874830559440}
+  - component: {fileID: 6775273338740261774}
+  - component: {fileID: 8452355771494255499}
   m_Layer: 3
-  m_Name: Knife
-  m_TagString: Knife
+  m_Name: Ammo
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &155081855318471251
+--- !u!4 &7334187405257739043
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.858, y: 2.261, z: -19.649}
-  m_LocalScale: {x: 0.07723811, y: 0.071923, z: 0.5812457}
+  m_LocalPosition: {x: 10.992, y: 2.183, z: -19.303}
+  m_LocalScale: {x: 0.121464886, y: 0.09343626, z: 0.16817082}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7271637883510834716
+--- !u!33 &1533861662490933216
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6975439719834211351
+--- !u!23 &42691191060851019
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,13 +89,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &603980017106758806
+--- !u!65 &2402380874830559440
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,13 +110,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3332113446065839290
+--- !u!54 &6775273338740261774
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -137,20 +137,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3167650754652203760
+--- !u!114 &8452355771494255499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 856829370383174938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca860b9e5fe0a6478a78d4c0cfa43c8, type: 3}
+  m_Script: {fileID: 11500000, guid: f820c1769fdf04b43b424fb457b5ad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemRb: {fileID: 3332113446065839290}
-  ItemPrefab: {fileID: 5166273097797659347}
-  ItemName: Knife
-  ItemSprite: {fileID: 21300000, guid: b3bf99bd02783df4fa06142a527c1d32, type: 3}
-  AssignKey: 50
+  ItemRb: {fileID: 6775273338740261774}
+  ItemPrefab: {fileID: 856829370383174938}
+  ItemName: Ammo
+  ItemSprite: {fileID: 21300000, guid: 6f8548bbcc107ff4a9f6aad5d2829622, type: 3}
+  AssignKey: 53
+  AmmoAmount: 12
+  BulletPrefab: {fileID: 75919189607759499, guid: 5b22417495746554ba4fd7385572d1cc, type: 3}

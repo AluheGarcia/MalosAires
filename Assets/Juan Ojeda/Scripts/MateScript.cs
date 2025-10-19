@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class MateScript : Item, IUsable
 {
-    [SerializeField] private int EnerggyRestoreAmount = 50;
+    [SerializeField] private int SipsAmount = 7;
+    [SerializeField] private float EnergyRestoreAmount = 25f;
     public void Use(GameObject user)
-    {         Debug.Log("Mate usado");
-        // Add logic for using the mate item here
-        // For example, increase player's energy or health
-        // player.GetComponent<PlayerStats>().IncreaseEnergy(10);
+    {         
+        PlayerStamina stamina = user.GetComponent<PlayerStamina>();
+        if (stamina != null && SipsAmount >0)
+        {
+            stamina.RestoreStaminaByDrink(EnergyRestoreAmount);
+           
+            
+        }
+        SipsAmount--;
+
     }
 }
