@@ -83,9 +83,11 @@ public class PlayerAnimController : MonoBehaviour
     {
         anim.SetBool("Switch", true);
         Invoke("SwitchFalse", 1f);
+        player.GetComponent<PlayerMovement>().Switching();
     }
     public void SwitchFalse()
     {
         anim.SetBool("Switch", false);
+        player.GetComponent<PlayerMovement>().NotSwitching();
     }
 }
