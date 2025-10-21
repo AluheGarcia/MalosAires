@@ -8,14 +8,6 @@ public class ZombieExplosion : HealthManagerZombieBase
     {
         particles.Stop();
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            particles.Play();
-            Debug.Log("Manual: listo");
-        }
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
