@@ -5,6 +5,7 @@ public class WeaponSwitch : MonoBehaviour
 {
 
     private int weapon;
+    [SerializeField] private GameObject model;
 
     void Update()
     {
@@ -12,6 +13,8 @@ public class WeaponSwitch : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E))
         {
             weapon++;
+            model.GetComponent<PlayerAnimController>().Switch();
+
         }
 
         if (weapon%2 == 0)
