@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +12,7 @@ public class MenuManagment : MonoBehaviour
     [SerializeField] List<Image> SlotImages;
     [SerializeField] List <string> ItemNames;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
     void Awake()
     {
        ItemsSlots.Clear();
@@ -25,7 +24,6 @@ public class MenuManagment : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I) && InventoryMenuActive)
@@ -46,17 +44,14 @@ public class MenuManagment : MonoBehaviour
 
     public void AddItemToInventory(string ItemName, Sprite ItemSprite)
     {
-        Debug.Log("Intentando agregar {ItemName} al inventario. Sprite nulo: {ItemSprite == null}");
+        
         if (ItemsSlots.TryGetValue(ItemName, out Image Slot))
         {
             Slot.sprite = ItemSprite;
             Slot.gameObject.SetActive(true);
             
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró un slot para el item: {ItemName}");
-        }
+       
 
     }
 public void RemoveItemFromInventory(string ItemName)
@@ -66,10 +61,7 @@ public void RemoveItemFromInventory(string ItemName)
             Slot.sprite = null;
             Slot.gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró un slot para el item: {ItemName}");
-        }
+       
     }
 
 
