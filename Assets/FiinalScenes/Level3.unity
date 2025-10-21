@@ -254,35 +254,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d8895f13adaef243a13573c161fd22b, type: 3}
   m_PrefabInstance: {fileID: 4974665}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6969380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
-  m_PrefabInstance: {fileID: 1143645365}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6969382 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
-  m_PrefabInstance: {fileID: 1143645365}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6969383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3548588485384254789, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   m_PrefabInstance: {fileID: 1143645365}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6969384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!198 &6969386 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
+  m_PrefabInstance: {fileID: 1143645365}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddf3a46fab3eaa469daf647d6063a24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 6969382}
-  enemyHealth: {fileID: 1325824663}
 --- !u!1 &7570164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2849074148708094778, guid: 81293be662504f54fac01849d46dec60, type: 3}
@@ -75938,7 +75919,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1601422298402644744, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6969383}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2121958162987596210, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2047946759}
   m_SourcePrefab: {fileID: 100100000, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
 --- !u!1 &842467976 stripped
 GameObject:
@@ -94986,10 +94970,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6969384}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
 --- !u!1 &1145966679 stripped
 GameObject:
@@ -105654,17 +105635,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1601422298402644744, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
   m_PrefabInstance: {fileID: 840423743}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1325824663 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1573567772899067899, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
-  m_PrefabInstance: {fileID: 840423743}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39aa365440c22141b38a6adc22ac2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1330646334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172196,6 +172166,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8000016, y: 2.2166052, z: 0.16000016}
   m_Center: {x: 0.0037540812, y: 1.1083026, z: 0.017275713}
+--- !u!1 &2047946752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121958162987596210, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
+  m_PrefabInstance: {fileID: 840423743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2047946759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047946752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220332e298314704591648cea1679014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 6969386}
 --- !u!65 &2050369313
 BoxCollider:
   m_ObjectHideFlags: 0

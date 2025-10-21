@@ -2,6 +2,19 @@ using UnityEngine;
 
 public class ZombieExplosion : HealthBarManagerZombieBase
 {
+    public ParticleSystem particles;
+    void Start()
+    {
+        particles.Stop();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            particles.Play();
+            Debug.Log("Manual: listo");
+        }
+    }
     private void OnTriggerEnter(Collider colider)
     {
 
