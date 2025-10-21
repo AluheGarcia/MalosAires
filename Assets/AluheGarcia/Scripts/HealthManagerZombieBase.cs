@@ -10,7 +10,6 @@ public class HealthManagerZombieBase : MonoBehaviour, IHealthZombieBase
     [SerializeField] int RangeDamage;
     public Animator animator;
     private int maxHealth;
-
     private UnityEngine.AI.NavMeshAgent agent;
     public int Health { get { return health; } set { health = value; } }
     public void Death() { }
@@ -23,8 +22,6 @@ public class HealthManagerZombieBase : MonoBehaviour, IHealthZombieBase
     public void TakeRangeDamage()
     {
         health -= RangeDamage;
-        Debug.Log(transform.name + " Health " + health);
-
         if (health <= maxHealth / 2)
         {
             animator.SetBool("EnemigoCrawl", true);
@@ -32,17 +29,13 @@ public class HealthManagerZombieBase : MonoBehaviour, IHealthZombieBase
         }
         if (health <= 0)
         {
-            Debug.Log(transform.name + " murió");
-
-            Destroy(gameObject);
+            Destroy(gameObject);       
         }
     }
 
     public void TakeMeleeDamage()
     {
         health -= MeleeDamage;
-        Debug.Log(transform.name + " Health " + health);
-
         if (health <= maxHealth / 2)
         {
             animator.SetBool("EnemigoCrawl", true);
@@ -50,8 +43,7 @@ public class HealthManagerZombieBase : MonoBehaviour, IHealthZombieBase
         }
         if (health <= 0)
         {
-            Debug.Log(transform.name + " murió");
-            Destroy(gameObject);
+            Destroy(gameObject);   
         }
     }
 
