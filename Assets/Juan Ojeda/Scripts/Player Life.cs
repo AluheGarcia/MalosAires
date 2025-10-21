@@ -4,20 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int QHitsSuported = 1;
-    public int hitsSuported => QHitsSuported;
-   
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int hitsSuported => QHitsSuported;    
     
 
     public void TakeHit ()
@@ -29,7 +16,7 @@ public class PlayerLife : MonoBehaviour
     public void ResetHits ()
     {
         
-            QHitsSuported = 1;
+        QHitsSuported = 1;
                 
     }
 

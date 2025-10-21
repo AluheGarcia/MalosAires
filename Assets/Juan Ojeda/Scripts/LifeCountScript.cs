@@ -14,7 +14,7 @@ public class LifeCountScript : MonoBehaviour
 
      public int life => Lifes;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Time.timeScale = 1f;
@@ -23,7 +23,7 @@ public class LifeCountScript : MonoBehaviour
         LivesUI();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
        if (PlayerLifes.hitsSuported <= 0 && Lifes > 0)
@@ -41,6 +41,7 @@ public class LifeCountScript : MonoBehaviour
             Cursor.visible = true;
 
         }
+     
     }
 
     private void LivesUI()
@@ -54,26 +55,33 @@ public class LifeCountScript : MonoBehaviour
 
     private void LoseLife()
     {
-        Lifes--;
-        Debug.Log($"El jugador perdio una vida. Vidas restantes: {Lifes}");
-
-        //Este codigo te saca una vida cada 3 hits, hay que arreglarlo
+        Lifes--;       
+              
 
         if ( Lifes > 0 && PlayerLifes.hitsSuported <= 0)
         {
             PlayerLifes.ResetHits();
         }
-        else
+        
+    }
+
+    public void RestoreLife()
+    {
+       
+        if (Lifes < 3)
         {
-            Debug.Log("SinVidas");
+            Lifes++;
+            
         }
+
+        PlayerLifes.ResetHits();
+        LivesUI();
     }
 
   
     public void ContinueGame()
     {
-        
-        Debug.Log("Continuar juego");
+              
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -81,7 +89,7 @@ public class LifeCountScript : MonoBehaviour
 
     public void ExitMenu()
     {
-        Debug.Log("Salio al menu");
+        
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu Inicio");
     }
