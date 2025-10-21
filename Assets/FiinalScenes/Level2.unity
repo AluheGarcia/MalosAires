@@ -1253,6 +1253,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1001606
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1001606
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1001606
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -797.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 350.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976625957863687560, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -46.517
+      objectReference: {fileID: 0}
     - target: {fileID: 3762168445526576367, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1265,6 +1289,18 @@ PrefabInstance:
       propertyPath: DefeatScreen
       value: 
       objectReference: {fileID: 1494838922}
+    - target: {fileID: 7778905906650909221, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778905906650909221, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7778905906650909221, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 8508178205731381241, guid: 9cb43bea01dac5146a894c2525529037, type: 3}
       propertyPath: m_Pivot.x
       value: 0
