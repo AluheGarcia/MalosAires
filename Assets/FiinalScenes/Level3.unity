@@ -75838,7 +75838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2121958162987596210, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyExp
       objectReference: {fileID: 0}
     - target: {fileID: 3029611752125803436, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -75870,7 +75870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7662091318002094208, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.70412
+      value: -60.67
       objectReference: {fileID: 0}
     - target: {fileID: 7662091318002094208, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94962,6 +94962,10 @@ PrefabInstance:
     - target: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
       propertyPath: m_Name
       value: Blood Splash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyExp
       objectReference: {fileID: 0}
     - target: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
       propertyPath: looping
@@ -172171,6 +172175,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2121958162987596210, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
   m_PrefabInstance: {fileID: 840423743}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2047946753 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4672847233103706482, guid: 89888c8923aa6a54893490a31b987b85, type: 3}
+  m_PrefabInstance: {fileID: 840423743}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2047946759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172183,6 +172192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220332e298314704591648cea1679014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  MeleeDamage: 1
+  RangeDamage: 1
+  animator: {fileID: 2047946753}
   particles: {fileID: 6969386}
 --- !u!65 &2050369313
 BoxCollider:

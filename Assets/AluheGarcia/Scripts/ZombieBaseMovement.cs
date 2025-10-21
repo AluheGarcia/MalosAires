@@ -20,7 +20,6 @@ public class ZombieBaseMovement : MonoBehaviour
     {
         playerTarget = player.transform;
         isAttacking = true;
-        Debug.Log(gameObject.name + " ha sido notificado y ahora está atacando.");
         animator.SetBool("DetectoEnemigo", true);
     }
 

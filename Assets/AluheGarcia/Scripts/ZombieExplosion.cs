@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class ZombieExplosion : HealthBarManagerZombieBase
+public class ZombieExplosion : HealthManagerZombieBase
 {
     public ParticleSystem particles;
+    protected private bool zombieExplosion = false;
     void Start()
     {
         particles.Stop();
@@ -15,17 +16,20 @@ public class ZombieExplosion : HealthBarManagerZombieBase
             Debug.Log("Manual: listo");
         }
     }
-    private void OnTriggerEnter(Collider colider)
+    private void OnCollisionEnter(Collision collision)
     {
-
-        if (colider.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("tocado");
+            particles.Play();
             Explosion();
         }
     }
     public void Explosion()
-    {   
-            Destroy(gameObject);       
+    {
+        zombieExplosion = true;
+        Destroy(gameObject,0.3f);   
+             
     }
 
 }
