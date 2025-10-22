@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5166273097797659347
+--- !u!1 &8659313258486293146
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 155081855318471251}
-  - component: {fileID: 7271637883510834716}
-  - component: {fileID: 6975439719834211351}
-  - component: {fileID: 603980017106758806}
-  - component: {fileID: 3332113446065839290}
-  - component: {fileID: 3167650754652203760}
+  - component: {fileID: 4402250012268836292}
+  - component: {fileID: 8788297773950210261}
+  - component: {fileID: 6216483543833738689}
+  - component: {fileID: 6924938140656107579}
+  - component: {fileID: 6176393162261035165}
+  - component: {fileID: 7098114674216061469}
   m_Layer: 3
-  m_Name: Knife
-  m_TagString: Knife
+  m_Name: Bandage
+  m_TagString: Bandage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &155081855318471251
+--- !u!4 &4402250012268836292
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 8659313258486293146}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.858, y: 2.261, z: -19.649}
-  m_LocalScale: {x: 0.07723811, y: 0.071923, z: 0.5812457}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7209201, w: 0.6930182}
+  m_LocalPosition: {x: 10.157299, y: 2.218, z: -17.6499}
+  m_LocalScale: {x: 0.10019346, y: 0.09401554, z: 0.10019346}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7271637883510834716
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -92.261}
+--- !u!33 &8788297773950210261
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &6975439719834211351
+  m_GameObject: {fileID: 8659313258486293146}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6216483543833738689
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 8659313258486293146}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,34 +89,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &603980017106758806
-BoxCollider:
+--- !u!114 &6924938140656107579
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 8659313258486293146}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3332113446065839290
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24a571fa718ac04cbcc0d322476c681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemRb: {fileID: 6176393162261035165}
+  ItemPrefab: {fileID: 8659313258486293146}
+  ItemName: Bandage
+  ItemSprite: {fileID: 21300000, guid: 21ce0de8b5696f448b5431806b5aa149, type: 3}
+  AssignKey: 52
+--- !u!54 &6176393162261035165
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 8659313258486293146}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -136,21 +132,25 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3167650754652203760
-MonoBehaviour:
+  m_CollisionDetection: 1
+--- !u!65 &7098114674216061469
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166273097797659347}
+  m_GameObject: {fileID: 8659313258486293146}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca860b9e5fe0a6478a78d4c0cfa43c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemRb: {fileID: 3332113446065839290}
-  ItemPrefab: {fileID: 5166273097797659347}
-  ItemName: Knife
-  ItemSprite: {fileID: 21300000, guid: b3bf99bd02783df4fa06142a527c1d32, type: 3}
-  AssignKey: 50
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2.6770642, z: 1.529957}
+  m_Center: {x: 0.00000007435587, y: -0.07305751, z: 0.06679011}
