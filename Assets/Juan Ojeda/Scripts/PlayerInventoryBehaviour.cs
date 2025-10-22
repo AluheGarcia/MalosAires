@@ -64,6 +64,7 @@ public class InventoryBehaviour : MonoBehaviour
         {
             Item item = NearItem.GetComponent<Item>();
             if (item == null) return;
+
             KeyCode assignKey = item.GetAssignKey();
 
             if (Inventory.ContainsKey(assignKey))
@@ -73,15 +74,22 @@ public class InventoryBehaviour : MonoBehaviour
                     return;
                 }
 
-                //if (!Inventory[assingKey].HasItem)
+                if (!Inventory[assignKey].HasItem)
+                {
+                    Inventory[assignKey].HasItem = true;
 
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                         item.itemName,
                         item.itemSprite);
+
+                    NearItem.SetActive(false);
+                    NearItem = null;
+
+                    return;
+                }
+
                     
-                  NearItem.SetActive(false);
-                  NearItem = null;
-                return;
+                
             }
 
             if (!Inventory.ContainsKey(assignKey))
