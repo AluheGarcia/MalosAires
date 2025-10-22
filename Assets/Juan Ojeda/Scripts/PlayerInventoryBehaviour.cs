@@ -28,9 +28,9 @@ public class InventoryBehaviour : MonoBehaviour
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
         Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
-        Inventory[KeyCode.Alpha3] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        Inventory[KeyCode.Alpha4] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
-        Inventory[KeyCode.Alpha5] = new InventorySlot(ItemPrefabs[4]) { HasItem = false };
+        //Inventory[KeyCode.Alpha3] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
+        //Inventory[KeyCode.Alpha4] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
+        //Inventory[KeyCode.Alpha5] = new InventorySlot(ItemPrefabs[4]) { HasItem = false };
     }
 
     
@@ -63,11 +63,17 @@ public class InventoryBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && NearItem != null)
         {
             Item item = NearItem.GetComponent<Item>();
+            if (item == null) return;
             KeyCode assignKey = item.GetAssignKey();
 
-            if (Inventory.ContainsKey(assignKey) && !Inventory[assignKey].HasItem)
+            if (Inventory.ContainsKey(assignKey))
             {
-                    Inventory[assignKey].HasItem = true;
+                if (Inventory[assignKey].HasItem && item.itemName == "Bandage")
+                {
+                    return;
+                }
+
+                //if (!Inventory[assingKey].HasItem)
 
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                         item.itemName,
@@ -75,7 +81,17 @@ public class InventoryBehaviour : MonoBehaviour
                     
                   NearItem.SetActive(false);
                   NearItem = null;
-                    
+                return;
+            }
+
+            if (!Inventory.ContainsKey(assignKey))
+            {
+                GetComponent<MenuManagment>()?.AddItemToInventory(
+                    item.itemName,
+                    item.itemSprite);
+
+                NearItem.SetActive(false);
+                NearItem = null;
             }
             
         }
