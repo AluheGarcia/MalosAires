@@ -27,10 +27,7 @@ public class InventoryBehaviour : MonoBehaviour
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
-        //Inventory[KeyCode.Alpha3] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        //Inventory[KeyCode.Alpha4] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
-        //Inventory[KeyCode.Alpha5] = new InventorySlot(ItemPrefabs[4]) { HasItem = false };
+        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };       
     }
 
     
@@ -66,6 +63,19 @@ public class InventoryBehaviour : MonoBehaviour
             if (item == null) return;
 
             KeyCode assignKey = item.GetAssignKey();
+
+            AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
+            if ( ammoBox != null)
+            {
+                PlayerAmmo playerAmmo = GetComponent<PlayerAmmo>();
+                if (playerAmmo != null)
+                {
+                    playerAmmo.AddAmmo(ammoBox.ammoAmount);
+                    NearItem.SetActive(false);
+                    NearItem = null;
+                    return;
+                }
+            }
 
             if (Inventory.ContainsKey(assignKey))
             {
