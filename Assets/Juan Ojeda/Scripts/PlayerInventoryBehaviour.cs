@@ -71,10 +71,13 @@ public class InventoryBehaviour : MonoBehaviour
                 if (playerAmmo != null)
                 {
                     playerAmmo.AddAmmo(ammoBox.ammoAmount);
+                    GetComponent<MenuManagment>()?.AddItemToInventory(
+                       item.itemName,
+                       item.itemSprite);
                     NearItem.SetActive(false);
                     NearItem = null;
                     return;
-                }
+                }                
             }
 
             if (Inventory.ContainsKey(assignKey))
