@@ -20,8 +20,10 @@ public class PlayerStamina : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody rb;
     private bool isSprinting = false;
+    public bool IsSprinting => isSprinting;
     private bool canSprint = true;
-    
+    public bool CanSprint => canSprint;
+
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -45,33 +47,24 @@ public class PlayerStamina : MonoBehaviour
         if (sprintKeyPressed && isMoving && canSprint && currentStamina > 0)
 
         {
-            if (!isSprinting)
-            {
-                isSprinting = true;
-                playerMovement.moveSpeed *= sprintMultiplier;
-            }
 
+            isSprinting = true;
             currentStamina -= staminaDrainRate * Time.deltaTime;
         }
-        else if (isSprinting)
+        else
         {
             isSprinting = false;
-            playerMovement.moveSpeed /= sprintMultiplier;
         }
+
+        
 
         if (currentStamina <= 0)
         {
             currentStamina = 0;
             canSprint = false;
-
-            if (isSprinting)
-            {
-                isSprinting = false;
-                playerMovement.moveSpeed /= sprintMultiplier;
-            }
-            UpdateStaminaUI();
-
+            
         }
+        UpdateStaminaUI();
     }
 
     public void RegenerateStamina()

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
 
     public Transform orientation;
+    private PlayerStamina Stamina;
 
 
     float horizontalInput;
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        Stamina = GetComponent<PlayerStamina>();
 
     }
 
@@ -99,30 +102,35 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (attacking == false & aiming == false & switching == false)
+        if (!attacking && !aiming && !switching)
         {
-            if (sprint == true & walking == true)
+            if (Stamina.IsSprinting && walking)
             {
                 moveSpeed = 4;
                 model.GetComponent<PlayerAnimController>().Sprint();
             }
-            if (sidewalk == true & sprint == false)
+            else if (walking)
             {
-                moveSpeed = 1;
+                moveSpeed = 1.5f;
+                model.GetComponent<PlayerAnimController>().Walking();
             }
-
-            if (sidewalk == false & sprint == false)
- 
+            else if (sidewalk)
             {
-                NormalSpeed();
+                moveSpeed = 1f;
+                model.GetComponent<PlayerAnimController>().WalkingRight();
+            }
+            else
+            {
+                model.GetComponent<PlayerAnimController>().Still();
             }
         }
+
         else
-        {
-            moveSpeed = 0;
+        { 
+         moveSpeed = 0f;
         }
-
-
+        
+        
     }
 
 
