@@ -1,6 +1,8 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryBehaviour : MonoBehaviour
 {
@@ -16,6 +18,9 @@ public class InventoryBehaviour : MonoBehaviour
     public GameObject Equippeditem => equippedItem;
     private bool HasItem = false;
 
+    [SerializeField] private UnityEngine.UI.Image equippedItemIcon;
+    [SerializeField] private GameObject equippedItemHUD;
+
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
     private KeyCode equippedKey = KeyCode.None;
     public KeyCode EquippedKey => equippedKey;
@@ -27,7 +32,12 @@ public class InventoryBehaviour : MonoBehaviour
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };       
+        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false }; 
+
+        if (equippedItemHUD != null)
+        {
+            equippedItemHUD.SetActive(false);
+        }
     }
 
     
@@ -195,6 +205,26 @@ public class InventoryBehaviour : MonoBehaviour
     public bool IsItemEquipped(GameObject item)
     {
         return equippedItem == item;
+    }
+
+   public void UpdateEquippedHUD(Item itemScript)
+    {
+        if (equippedItemHUD == null || equippedItemIcon == null) return;
+
+        if (itemScript == null)
+        {
+            equippedItemHUD.SetActive(false);
+            return;
+        }
+
+        equippedItemHUD.SetActive(true);
+        equippedItemIcon.sprite = itemScript.itemSprite;
+    }
+
+    public void ClearEquippedHUD()
+    {
+        if (equippedItemHUD != null)
+            equippedItemHUD.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)
