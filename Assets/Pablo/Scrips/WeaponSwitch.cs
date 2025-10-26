@@ -38,7 +38,7 @@ public class WeaponSwitch : MonoBehaviour
 
         }
 
-
+        revolver.GetComponent<MeleeAttack>().enabled = false;
     }
 
 
