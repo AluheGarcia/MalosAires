@@ -3,6 +3,7 @@ using UnityEngine;
 public class AmmoScript :Item, IUsable
 {
     [SerializeField] private int AmmoAmount = 12;
+    public int ammoAmount => AmmoAmount;
     private int BoxQuantity = 1;
     [SerializeField] private GameObject BulletPrefab;
 

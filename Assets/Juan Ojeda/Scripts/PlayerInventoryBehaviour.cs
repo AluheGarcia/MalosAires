@@ -27,10 +27,7 @@ public class InventoryBehaviour : MonoBehaviour
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
-        Inventory[KeyCode.Alpha3] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        Inventory[KeyCode.Alpha4] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
-        Inventory[KeyCode.Alpha5] = new InventorySlot(ItemPrefabs[4]) { HasItem = false };
+        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };       
     }
 
     
@@ -63,19 +60,59 @@ public class InventoryBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && NearItem != null)
         {
             Item item = NearItem.GetComponent<Item>();
+            if (item == null) return;
+
             KeyCode assignKey = item.GetAssignKey();
 
-            if (Inventory.ContainsKey(assignKey) && !Inventory[assignKey].HasItem)
+            AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
+            if ( ammoBox != null)
             {
+                PlayerAmmo playerAmmo = GetComponent<PlayerAmmo>();
+                if (playerAmmo != null)
+                {
+                    playerAmmo.AddAmmo(ammoBox.ammoAmount);
+                    GetComponent<MenuManagment>()?.AddItemToInventory(
+                       item.itemName,
+                       item.itemSprite);
+                    NearItem.SetActive(false);
+                    NearItem = null;
+                    return;
+                }                
+            }
+
+            if (Inventory.ContainsKey(assignKey))
+            {
+                if (Inventory[assignKey].HasItem && item.itemName == "Bandage")
+                {
+                    return;
+                }
+
+                if (!Inventory[assignKey].HasItem)
+                {
                     Inventory[assignKey].HasItem = true;
 
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                         item.itemName,
                         item.itemSprite);
+
+                    NearItem.SetActive(false);
+                    NearItem = null;
+
+                    return;
+                }
+
                     
-                  NearItem.SetActive(false);
-                  NearItem = null;
-                    
+                
+            }
+
+            if (!Inventory.ContainsKey(assignKey))
+            {
+                GetComponent<MenuManagment>()?.AddItemToInventory(
+                    item.itemName,
+                    item.itemSprite);
+
+                NearItem.SetActive(false);
+                NearItem = null;
             }
             
         }

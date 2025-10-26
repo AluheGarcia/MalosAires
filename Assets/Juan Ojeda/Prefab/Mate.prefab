@@ -154,4 +154,5 @@ MonoBehaviour:
   ItemName: Mate
   ItemSprite: {fileID: 21300000, guid: 0e17ad38fbf658e4fa37adfa69ba72b7, type: 3}
   AssignKey: 51
-  EnerggyRestoreAmount: 50
+  SipsAmount: 7
+  EnergyRestoreAmount: 25
