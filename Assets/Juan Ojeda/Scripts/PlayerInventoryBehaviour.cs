@@ -18,8 +18,9 @@ public class InventoryBehaviour : MonoBehaviour
     public GameObject Equippeditem => equippedItem;
     private bool HasItem = false;
 
+    [SerializeField] private EquippedItemHUD equippedItemHUD;
     [SerializeField] private UnityEngine.UI.Image equippedItemIcon;
-    [SerializeField] private GameObject equippedItemHUD;
+    
 
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
     private KeyCode equippedKey = KeyCode.None;
@@ -33,11 +34,9 @@ public class InventoryBehaviour : MonoBehaviour
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
         Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false }; 
+        equippedItemHUD = FindAnyObjectByType<EquippedItemHUD>();
 
-        if (equippedItemHUD != null)
-        {
-            equippedItemHUD.SetActive(false);
-        }
+
     }
 
     
@@ -152,8 +151,21 @@ public class InventoryBehaviour : MonoBehaviour
                 {
                     itemScript.SetInventory (this);
                     itemScript.SetPrefab(entry.Value.itemPrefab);
-                   
+
+                    if (equippedItemHUD != null)
+                    {
+                       int amount = 1;
+                        if (itemScript is BandageScript bandage)
+                            amount = bandage.GetRemainingAmount();
+                        else  if (itemScript is MateScript mate)
+                            amount = mate.GetRemainingAmount();
+
+                        equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
+                    }
+
                 }
+
+                
 
               
 
@@ -207,25 +219,7 @@ public class InventoryBehaviour : MonoBehaviour
         return equippedItem == item;
     }
 
-   public void UpdateEquippedHUD(Item itemScript)
-    {
-        if (equippedItemHUD == null || equippedItemIcon == null) return;
-
-        if (itemScript == null)
-        {
-            equippedItemHUD.SetActive(false);
-            return;
-        }
-
-        equippedItemHUD.SetActive(true);
-        equippedItemIcon.sprite = itemScript.itemSprite;
-    }
-
-    public void ClearEquippedHUD()
-    {
-        if (equippedItemHUD != null)
-            equippedItemHUD.SetActive(false);
-    }
+  
 
     public void OnTriggerEnter(Collider other)
     {

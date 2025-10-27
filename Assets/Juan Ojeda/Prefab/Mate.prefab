@@ -153,6 +153,6 @@ MonoBehaviour:
   ItemPrefab: {fileID: 5526110482708239567}
   ItemName: Mate
   ItemSprite: {fileID: 21300000, guid: 0e17ad38fbf658e4fa37adfa69ba72b7, type: 3}
-  AssignKey: 51
+  AssignKey: 49
   SipsAmount: 7
   EnergyRestoreAmount: 25

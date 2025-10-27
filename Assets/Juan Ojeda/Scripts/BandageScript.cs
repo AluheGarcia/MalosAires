@@ -25,6 +25,7 @@ public class BandageScript : Item , IUsable
         TotalAmount--;
 
         InventoryBehaviour inventory = user.GetComponent<InventoryBehaviour>();
+        EquippedItemHUD hud = user.GetComponentInChildren<EquippedItemHUD>();
 
         if (TotalAmount <= 0 && inventory != null)
         {
@@ -35,7 +36,20 @@ public class BandageScript : Item , IUsable
             }
             Destroy(gameObject);
         }
+
+        if (hud != null)
+        {
+            if (TotalAmount > 0)
+                hud.UpdateDisplay(itemSprite, TotalAmount);
+            else
+            {
+                hud.ClearDisplay();
+            }
+        }
     }
 
-    
+   public int GetRemainingAmount()
+    {
+        return TotalAmount;
+    }
 }

@@ -15,5 +15,21 @@ public class MateScript : Item, IUsable
         }
         SipsAmount--;
 
+        EquippedItemHUD hud = user.GetComponentInChildren<EquippedItemHUD>();
+        if (hud != null)
+        {
+            if (SipsAmount > 0)
+                hud.UpdateDisplay(itemSprite, SipsAmount);
+            else
+            {
+                hud.ClearDisplay();
+            }
+        }
+
+    }
+
+    public int GetRemainingAmount()
+    {
+        return SipsAmount;
     }
 }
