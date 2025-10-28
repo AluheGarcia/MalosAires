@@ -78,7 +78,16 @@ public class LifeCountScript : MonoBehaviour
         LivesUI();
     }
 
-  
+    public int GetCurrentLives()
+    {
+        return Lifes;
+    }
+
+    public int GetMaxLives()
+    {
+        return LifeIcons.Length;
+    }
+
     public void ContinueGame()
     {
               

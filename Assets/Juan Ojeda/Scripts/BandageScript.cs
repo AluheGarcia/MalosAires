@@ -18,6 +18,12 @@ public class BandageScript : Item , IUsable
         InventoryBehaviour inventory = user.GetComponent<InventoryBehaviour>();
         EquippedItemHUD hud = user.GetComponentInChildren<EquippedItemHUD>();
 
+        if (playerLife.GetCurrentLives() >= playerLife.GetMaxLives())
+        {
+            return;
+        }
+                
+
         if (playerLife != null && TotalAmount > 0)
         {            
            
@@ -55,6 +61,6 @@ public class BandageScript : Item , IUsable
     }
 
    public int GetRemainingAmount() => TotalAmount;
-    public void SetTotalAmount(int amount) => TotalAmount = amount;
+   public void SetTotalAmount(int amount) => TotalAmount = amount;   
 
 }
