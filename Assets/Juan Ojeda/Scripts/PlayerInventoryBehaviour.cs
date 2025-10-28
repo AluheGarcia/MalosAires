@@ -2,12 +2,13 @@ using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.UI;
 
 public class InventoryBehaviour : MonoBehaviour
 {
     
-    // Script Del manejo de inventario 
+    
     [SerializeField] private Transform RightHand;
     [SerializeField] private List<GameObject> ItemPrefabs;
     [SerializeField] private List<KeyCode> ItemKeyLog;    
@@ -19,8 +20,8 @@ public class InventoryBehaviour : MonoBehaviour
     private bool HasItem = false;
 
     [SerializeField] private EquippedItemHUD equippedItemHUD;
-    [SerializeField] private UnityEngine.UI.Image equippedItemIcon;
-    
+    //[SerializeField] private UnityEngine.UI.Image equippedItemIcon;
+        
 
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
     private KeyCode equippedKey = KeyCode.None;
@@ -34,6 +35,8 @@ public class InventoryBehaviour : MonoBehaviour
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
         Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false }; 
+        Inventory[KeyCode.WheelDown] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
+        Inventory[KeyCode.WheelUp] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
         equippedItemHUD = FindAnyObjectByType<EquippedItemHUD>();
 
 
@@ -63,7 +66,7 @@ public class InventoryBehaviour : MonoBehaviour
 
 
     }
- 
+
     public void ItemAddition()
     {
         if (Input.GetKeyDown(KeyCode.E) && NearItem != null)
@@ -74,7 +77,7 @@ public class InventoryBehaviour : MonoBehaviour
             KeyCode assignKey = item.GetAssignKey();
 
             AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
-            if ( ammoBox != null)
+            if (ammoBox != null)
             {
                 PlayerAmmo playerAmmo = GetComponent<PlayerAmmo>();
                 if (playerAmmo != null)
@@ -86,7 +89,7 @@ public class InventoryBehaviour : MonoBehaviour
                     NearItem.SetActive(false);
                     NearItem = null;
                     return;
-                }                
+                }
             }
 
             if (Inventory.ContainsKey(assignKey))
@@ -100,6 +103,16 @@ public class InventoryBehaviour : MonoBehaviour
                 {
                     Inventory[assignKey].HasItem = true;
 
+                    if (item is BandageScript bandage)
+                    {
+                        Inventory[assignKey].itemAmount = bandage.GetRemainingAmount();
+
+                    }
+                    else if (item is MateScript mate)
+                    {
+                        Inventory[assignKey].itemAmount = mate.GetRemainingAmount();
+                    }
+
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                         item.itemName,
                         item.itemSprite);
@@ -110,22 +123,22 @@ public class InventoryBehaviour : MonoBehaviour
                     return;
                 }
 
-                    
-                
-            }
+              
 
-            if (!Inventory.ContainsKey(assignKey))
-            {
-                GetComponent<MenuManagment>()?.AddItemToInventory(
-                    item.itemName,
-                    item.itemSprite);
+                if (!Inventory.ContainsKey(assignKey))
+                {
+                    GetComponent<MenuManagment>()?.AddItemToInventory(
+                        item.itemName,
+                        item.itemSprite);
 
-                NearItem.SetActive(false);
-                NearItem = null;
+                    NearItem.SetActive(false);
+                    NearItem = null;
+                }
+
             }
-            
         }
     }
+    
 
 
     public void EquippedItem()
@@ -144,6 +157,8 @@ public class InventoryBehaviour : MonoBehaviour
                
 
                 equippedKey = entry.Key;
+
+               
                                
 
                 Item itemScript = equippedItem.GetComponent<Item>();
@@ -152,22 +167,31 @@ public class InventoryBehaviour : MonoBehaviour
                     itemScript.SetInventory (this);
                     itemScript.SetPrefab(entry.Value.itemPrefab);
 
-                    if (equippedItemHUD != null)
-                    {
-                       int amount = 1;
-                        if (itemScript is BandageScript bandage)
-                            amount = bandage.GetRemainingAmount();
-                        else  if (itemScript is MateScript mate)
-                            amount = mate.GetRemainingAmount();
+                    int amount = 1;
 
-                        equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
+                    if (itemScript is BandageScript || itemScript is MateScript)
+                    {
+                        equippedItem.SetActive (false);
                     }
 
-                }
+                    if (itemScript is BandageScript bandage)
+                    {
+                        bandage.SetTotalAmount(entry.Value.itemAmount);
+                        amount = bandage.GetRemainingAmount();
+                    }
+                    else if (itemScript is MateScript mate)
+                    {
+                        mate.SetTotalAmount(entry.Value.itemAmount);
+                        amount = mate.GetRemainingAmount();
+                    }
 
-                
-
-              
+                    if (equippedItemHUD != null)
+                    {
+                        equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
+                    }
+                   
+                }            
+                            
 
             }
         }
@@ -198,8 +222,7 @@ public class InventoryBehaviour : MonoBehaviour
             GetComponent<MenuManagment>()?.RemoveItemFromInventory(itemComp.itemName);
             equippedItem.SetActive(false);
             equippedItem = null;
-
-            Debug.Log("Item dropeado");
+           
         }
     }
 
@@ -207,7 +230,7 @@ public class InventoryBehaviour : MonoBehaviour
     {
         foreach (var slot in Inventory.Values)
         {
-            Debug.Log($"[DEBUG] Slot prefab: {slot.itemPrefab?.name} ({slot.itemPrefab?.GetInstanceID()}) | HasItem: {slot.HasItem}");
+           
             if (slot.itemPrefab == prefab && slot.HasItem)
                 return true;
         }
@@ -219,7 +242,20 @@ public class InventoryBehaviour : MonoBehaviour
         return equippedItem == item;
     }
 
-  
+    public void UpdateSlotmAmount(KeyCode key, int newamount)
+    {
+        if (Inventory.ContainsKey(key))
+        {
+            Inventory[key].itemAmount = newamount;
+
+            if (newamount <= 0)
+            {
+                Inventory[key].HasItem = false;
+                equippedItemHUD.ClearDisplay();
+            }
+        }
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {
@@ -245,10 +281,12 @@ public class InventoryBehaviour : MonoBehaviour
     {
         public GameObject itemPrefab;
         public bool HasItem;
+        public int itemAmount;
         public InventorySlot(GameObject prefab)
         {
             itemPrefab = prefab;
             HasItem = false;
+            itemAmount = 0;
         }
     }
 }
