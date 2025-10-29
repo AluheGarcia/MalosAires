@@ -34,9 +34,9 @@ public class InventoryBehaviour : MonoBehaviour
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false }; 
+        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
         Inventory[KeyCode.WheelDown] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        Inventory[KeyCode.WheelUp] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
+        Inventory[KeyCode.Alpha0] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
         equippedItemHUD = FindAnyObjectByType<EquippedItemHUD>();
 
 

@@ -41,8 +41,7 @@ public class KnifeScript : Item
             HealthManagerZombieBase zombieHealth = hit.GetComponent<HealthManagerZombieBase>();
 
             if (zombieHealth != null)
-            {
-                
+            {                
                 zombieHealth.TakeMeleeDamage();
             }
         }

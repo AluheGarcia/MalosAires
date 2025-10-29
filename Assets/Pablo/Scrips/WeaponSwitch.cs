@@ -20,7 +20,7 @@ public class WeaponSwitch : MonoBehaviour
 
         }
 
-        if (weapon%2 == 0)
+        if (weapon % 2 == 0)
         {
 
             GetComponent<MeleeAttack>().enabled = true;
@@ -28,7 +28,7 @@ public class WeaponSwitch : MonoBehaviour
             revolver.SetActive(false);
             knife.SetActive(true);
         }
-        else if (weapon%2 == 1)
+        else if (weapon % 2 == 1)
         {
 
             GetComponent<MeleeAttack>().enabled = false;
