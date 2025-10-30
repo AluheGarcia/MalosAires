@@ -88,6 +88,7 @@ public class InventoryBehaviour : MonoBehaviour
             AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
             if (ammoBox != null)
             {
+
                 PlayerAmmo playerAmmo = GetComponent<PlayerAmmo>();
                 if (playerAmmo != null)
                 {
@@ -95,7 +96,7 @@ public class InventoryBehaviour : MonoBehaviour
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                        item.itemName,
                        item.itemSprite);
-                    NearItem.SetActive(false);
+                    Destroy(NearItem);
                     NearItem = null;
                     return;
                 }

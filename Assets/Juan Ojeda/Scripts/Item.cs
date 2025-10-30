@@ -18,6 +18,7 @@ public abstract class Item : MonoBehaviour
 
     protected bool PlayerInRange = false;
     protected InventoryBehaviour inventory;   
+    public InventoryBehaviour inv => inventory;
 
     // Variables publicas pero no editables por otro 
 

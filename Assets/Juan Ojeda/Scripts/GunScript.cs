@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class GunScript : Item
@@ -7,6 +8,7 @@ public class GunScript : Item
     [SerializeField] private int totalAmmo = 0;
     
     [SerializeField] private GameObject BulletPrefab;
+    public GameObject bulletPrefab => BulletPrefab;
     private Transform BulletDirection;
 
     private float FireRate = 0.5f;
@@ -27,26 +29,7 @@ public class GunScript : Item
        
     }
 
-    //private void Update()
-    //{
-    //    if (inventory == null || inventory.Equippeditem != gameObject)
-    //    {
-    //        return; 
-    //    }
-
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        Shoot();
-    //    }
-       
-
-    //    if (Input.GetKeyDown(KeyCode.R))
-    //    {
-    //        Reload();
-    //    }
-        
-    //}
-
+  
     public bool CanShoot()
     {
         return BulletinMagazine > 0 && Time.time >= NextFireRate;
@@ -64,45 +47,33 @@ public class GunScript : Item
 
     public void Reload()
     {
-       PlayerAmmo playerAmmo = inventory.GetComponent<PlayerAmmo>();
-        if (playerAmmo == null)
-        
-          return;
-        
-      int bulletesNeeded = MaxBulletCapacity - BulletinMagazine;
+        if (inventory == null)
+        {
+            Debug.LogWarning("Inventory is null in GunScript.");
+            return;
+        }
 
-        if (bulletesNeeded > 0 && playerAmmo.TryConsumeAmmo(bulletesNeeded))
+        PlayerAmmo playerAmmo = inventory.GetComponent<PlayerAmmo>();
+        if (playerAmmo == null)
+        {
+            Debug.LogWarning("PlayerAmmo component not found on the player.");
+            return;
+        }
+          
+        
+      int bulletsNeeded = MaxBulletCapacity - BulletinMagazine;
+        Debug.Log($"Intentando recargar. Necesita {bulletsNeeded} balas. PlayerAmmo: { playerAmmo.TotalAmmo}");
+
+        if (bulletsNeeded > 0 && playerAmmo.TryConsumeAmmo(bulletsNeeded))
         {
             BulletinMagazine = MaxBulletCapacity;
-        }
-        
-
-    }
-
-    
-    public void Shoot()
-    {
-        if (BulletinMagazine <= 0)
-        {
-           return;
-        }
-
-        NextFireRate = Time.time + FireRate;
-
-        if (BulletDirection == null)
-        {                     
-          return;
-        }
-
-        BulletinMagazine--;
-
-        if (BulletPrefab != null && BulletDirection != null)
-        {
-            GameObject Bullet = Instantiate(BulletPrefab, BulletDirection.position, BulletDirection.rotation);
-        }
+            Debug.Log("Recargado completamente.");
+        }       
        
-    }
 
-    
+    }
+     public int GetCurrentBullets() => BulletinMagazine;
+        public int GetMaxMagazine() => MaxBulletCapacity;     
+       
 
 }
