@@ -44,8 +44,7 @@ public class InventoryBehaviour : MonoBehaviour
             
             if (slot.itemPrefab.name == "Knife" || slot.itemPrefab.name == "Revolver")
             {
-                slot.HasItem = true;
-                
+                slot.HasItem = true;                
             }
         }
 

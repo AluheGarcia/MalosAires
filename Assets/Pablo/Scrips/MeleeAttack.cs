@@ -8,10 +8,9 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private GameObject Attack;
     [SerializeField] private GameObject AttackDirection;
     [SerializeField] private GameObject model;
-    [SerializeField] private InventoryBehaviour inventory;
+    [SerializeField] private KnifeScript knifeScript;
 
 
-    private KnifeScript knifeScript;
     private float fireRate = 0.7f;
     private float nextFireTime = 0f;
 
@@ -26,6 +25,9 @@ public class MeleeAttack : MonoBehaviour
             Instantiate(Attack, AttackDirection.transform);
             Attack.SetActive(true);
             model.GetComponent<PlayerAnimController>().Attack();
+
+            if (knifeScript != null)
+                knifeScript.PerformAttack(gameObject);
 
         }        
 
