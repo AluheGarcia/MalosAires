@@ -7,11 +7,12 @@ public class WeaponSwitcher : MonoBehaviour
     [SerializeField] private Transform WeaponHolder;
     [SerializeField] private InventoryBehaviour inventory;
 
-    private GameObject Revolver;
-    private GameObject Knife;
+    [SerializeField] private GameObject Revolver;
+    [SerializeField] private GameObject Knife;
 
     private MeleeAttack meleeAttack;
     private RangeAttack rangeAttack;
+
     private int currentWeapon = 0; 
 
     void Start()

@@ -402,7 +402,7 @@ MonoBehaviour:
   ItemPrefab: {fileID: 6071693591503182755}
   ItemName: Gun
   ItemSprite: {fileID: 21300000, guid: 843a123ce0ad3a24f9c0949617216bae, type: 3}
-  AssignKey: 321
+  AssignKey: 48
   MaxBulletCapacity: 6
   BulletinMagazine: 0
   totalAmmo: 0

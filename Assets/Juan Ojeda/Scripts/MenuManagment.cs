@@ -24,6 +24,7 @@ public class MenuManagment : MonoBehaviour
         {
             ItemsSlots[ItemNames[i]] = SlotImages[i];
             SlotImages[i].gameObject.SetActive(false);
+                       
         }
         
     }

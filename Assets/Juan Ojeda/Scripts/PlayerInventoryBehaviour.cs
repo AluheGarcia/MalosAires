@@ -39,6 +39,16 @@ public class InventoryBehaviour : MonoBehaviour
         Inventory[KeyCode.Alpha0] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
         equippedItemHUD = FindAnyObjectByType<EquippedItemHUD>();
 
+        foreach (var slot in Inventory.Values)
+        {
+            
+            if (slot.itemPrefab.name == "Knife" || slot.itemPrefab.name == "Revolver")
+            {
+                slot.HasItem = true;
+                
+            }
+        }
+
 
     }
 
@@ -183,6 +193,11 @@ public class InventoryBehaviour : MonoBehaviour
                     {
                         mate.SetTotalAmount(entry.Value.itemAmount);
                         amount = mate.GetRemainingAmount();
+                    }
+
+                    if (itemScript is KnifeScript knife)
+                    {
+                        equippedItem.SetActive(true);
                     }
 
                     if (equippedItemHUD != null)
