@@ -6,6 +6,8 @@ public class BandageScript : Item , IUsable
 {
     private int TotalAmount = 3;
     public int totalAmount => TotalAmount;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip Bandage;
 
     private void Start()
     {
@@ -29,6 +31,11 @@ public class BandageScript : Item , IUsable
            
             playerLife.RestoreLife();
             TotalAmount--;
+
+            if (Bandage != null)
+            {
+                AudioSource.PlayClipAtPoint(Bandage, user.transform.position, 1f);
+            }
 
             KeyCode assignedKey = GetAssignKey();
 
