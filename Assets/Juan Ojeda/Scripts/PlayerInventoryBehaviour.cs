@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class InventoryBehaviour : MonoBehaviour
 {
-    
-    
+
+
     [SerializeField] private Transform RightHand;
     [SerializeField] private List<GameObject> ItemPrefabs;
-    [SerializeField] private List<KeyCode> ItemKeyLog;    
+    [SerializeField] private List<KeyCode> ItemKeyLog;
     [SerializeField] private bool ItemInRange = false;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject NearItem;
@@ -20,8 +20,8 @@ public class InventoryBehaviour : MonoBehaviour
     private bool HasItem = false;
 
     [SerializeField] private EquippedItemHUD equippedItemHUD;
-    //[SerializeField] private UnityEngine.UI.Image equippedItemIcon;
-        
+    [SerializeField] private MenuManagment menuManagment;
+
 
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
     private KeyCode equippedKey = KeyCode.None;
@@ -30,7 +30,7 @@ public class InventoryBehaviour : MonoBehaviour
     public List<GameObject> itemPrefabs => ItemPrefabs;
     public List<KeyCode> itemKeyLog => ItemKeyLog;
 
-    
+
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
@@ -41,30 +41,30 @@ public class InventoryBehaviour : MonoBehaviour
 
         foreach (var slot in Inventory.Values)
         {
-            
+
             if (slot.itemPrefab.name == "Knife" || slot.itemPrefab.name == "Revolver")
             {
-                slot.HasItem = true;                
+                slot.HasItem = true;
             }
         }
 
 
     }
 
-    
+
     void Update()
     {
-         
-       
-        ItemAddition ();
 
-        EquippedItem ();
+
+        ItemAddition();
+
+        EquippedItem();
 
         DroppedItem();
 
         if (equippedItem != null && Input.GetKeyDown(KeyCode.Q))
         {
-            
+
             IUsable usableItem = equippedItem.GetComponent<IUsable>();
             if (usableItem != null)
             {
@@ -133,7 +133,7 @@ public class InventoryBehaviour : MonoBehaviour
                     return;
                 }
 
-              
+
 
                 if (!Inventory.ContainsKey(assignKey))
                 {
@@ -148,7 +148,7 @@ public class InventoryBehaviour : MonoBehaviour
             }
         }
     }
-    
+
 
 
     public void EquippedItem()
@@ -156,32 +156,32 @@ public class InventoryBehaviour : MonoBehaviour
         foreach (var entry in Inventory)
         {
             if (Input.GetKeyDown(entry.Key) && entry.Value.HasItem)
-            {               
+            {
                 foreach (Transform child in RightHand)
                     Destroy(child.gameObject);
 
-             
+
                 equippedItem = Instantiate(entry.Value.itemPrefab, RightHand);
                 equippedItem.transform.localPosition = Vector3.zero;
                 equippedItem.transform.localRotation = Quaternion.identity;
-               
+
 
                 equippedKey = entry.Key;
 
-               
-                               
+
+
 
                 Item itemScript = equippedItem.GetComponent<Item>();
                 if (itemScript != null)
                 {
-                    itemScript.SetInventory (this);
+                    itemScript.SetInventory(this);
                     itemScript.SetPrefab(entry.Value.itemPrefab);
 
                     int amount = 1;
 
                     if (itemScript is BandageScript || itemScript is MateScript)
                     {
-                        equippedItem.SetActive (false);
+                        equippedItem.SetActive(false);
                     }
 
                     if (itemScript is BandageScript bandage)
@@ -205,12 +205,12 @@ public class InventoryBehaviour : MonoBehaviour
                         equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
                     }
 
-                }            
-                            
+                }
+
 
             }
         }
-        
+
     }
 
     public void DroppedItem()
@@ -225,19 +225,19 @@ public class InventoryBehaviour : MonoBehaviour
             {
                 KeyCode assignKey = itemComp.GetAssignKey();
 
-            if (Inventory.ContainsKey(assignKey))
-            {
-                Inventory[assignKey].HasItem = false;
+                if (Inventory.ContainsKey(assignKey))
+                {
+                    Inventory[assignKey].HasItem = false;
+                }
+                Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
             }
-               Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
-            }
-            
-            GameObject droppedItem = Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);            
+
+            GameObject droppedItem = Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
 
             GetComponent<MenuManagment>()?.RemoveItemFromInventory(itemComp.itemName);
             equippedItem.SetActive(false);
             equippedItem = null;
-           
+
         }
     }
 
@@ -245,7 +245,7 @@ public class InventoryBehaviour : MonoBehaviour
     {
         foreach (var slot in Inventory.Values)
         {
-           
+
             if (slot.itemPrefab == prefab && slot.HasItem)
                 return true;
         }
@@ -255,6 +255,23 @@ public class InventoryBehaviour : MonoBehaviour
     public bool IsItemEquipped(GameObject item)
     {
         return equippedItem == item;
+    }
+
+    public void UpdateInventoryDis(string ItemName, Sprite ItemSprite, int amount)
+    {
+        if (menuManagment == null)
+        {
+            return;
+        }
+
+        if (amount > 0)
+        {
+            menuManagment.AddItemToInventory(ItemName, ItemSprite);
+        }
+        else
+        {
+            menuManagment.RemoveItemFromInventory(ItemName);
+        }
     }
 
     public void UpdateSlotmAmount(KeyCode key, int newamount)

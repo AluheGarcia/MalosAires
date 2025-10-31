@@ -13,7 +13,7 @@ public abstract class Item : MonoBehaviour
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private string ItemName;
     [SerializeField] private Sprite ItemSprite;
-   
+    
     [SerializeField] protected KeyCode AssignKey;
 
     protected bool PlayerInRange = false;
