@@ -204,7 +204,7 @@ public class InventoryBehaviour : MonoBehaviour
                     {
                         equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
                     }
-                   
+
                 }            
                             
 

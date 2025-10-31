@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NUnit.Framework;
+
 public class EquippedItemHUD : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text amountText;
+        
 
     private Sprite currentIcon;
     private int currentAmount;
@@ -16,7 +19,7 @@ public class EquippedItemHUD : MonoBehaviour
 
     public void UpdateDisplay(Sprite icon, int amount)
     {
-        
+       
         if (icon == null || amount <=0)
         {
             ClearDisplay();
