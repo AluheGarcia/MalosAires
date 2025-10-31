@@ -26,7 +26,7 @@ public class RangeAttack : MonoBehaviour
             nextFireTime = Time.time + fireRate;
 
             Instantiate(Bullet, BulletDirection.transform.position, BulletDirection.transform.rotation);
-            Gun.SetActive(true);
+     //       Gun.SetActive(true);
             model.GetComponent<PlayerAnimController>().Shooting();
 
         }

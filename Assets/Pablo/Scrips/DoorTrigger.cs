@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class DoorTrigger2 : MonoBehaviour
+public class DoorTrigger : MonoBehaviour
 {
 
-    public GameObject door2;
+    public GameObject door;
 
     private void OnTriggerEnter(Collider colider)
     {
@@ -11,9 +11,8 @@ public class DoorTrigger2 : MonoBehaviour
         if (colider.gameObject.CompareTag("Player"))
         {
 
-            Destroy(door2);
+            Destroy(door);
 
-            Debug.Log("Puerta2 abierta");
         }
 
 
