@@ -19,7 +19,7 @@ public class GunScript : Item
     private void Start()
     {
         inventory = GetComponentInParent<InventoryBehaviour>();
-        BulletinMagazine = 0;
+        //BulletinMagazine = 0;
         Transform boca = transform.Find("Boca");
 
         if (boca != null)
@@ -73,7 +73,7 @@ public class GunScript : Item
 
     }
      public int GetCurrentBullets() => BulletinMagazine;
-        public int GetMaxMagazine() => MaxBulletCapacity;     
+     public int GetMaxMagazine() => MaxBulletCapacity;     
        
 
 }

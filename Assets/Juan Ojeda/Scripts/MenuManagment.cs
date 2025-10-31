@@ -77,7 +77,7 @@ public class MenuManagment : MonoBehaviour
         {
             Slot.sprite = null;
             Slot.gameObject.SetActive(false);
-        }
+        }       
        
     }   
 

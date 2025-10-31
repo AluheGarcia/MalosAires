@@ -1,20 +1,45 @@
 
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class RangeAttack : MonoBehaviour
 {
 
-    [SerializeField] private GameObject Bullet;
-    //[SerializeField] private GameObject BulletDirection;
+    [SerializeField] private GameObject Bullet;  
     [SerializeField] private GameObject Gun;
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject player;
     [SerializeField] private GunScript gunScript;
 
+    [SerializeField] private GameObject crosshair;
+    [SerializeField] private TMP_Text ammoDisplay;
+
     private bool aiming;
 
-    //private float fireRate = 0.7f;
+    
     private float nextFireTime = 0f;
+
+    private void OnEnable()
+    {
+        if (crosshair != null)
+            crosshair.SetActive(true);
+        if (ammoDisplay != null)
+        {
+            StartCoroutine(FadeInText(ammoDisplay, 0.5f));
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (crosshair != null)
+            crosshair.SetActive(false);
+
+        if (ammoDisplay != null)
+        {
+            StartCoroutine(FadeOutText(ammoDisplay, 0.5f));
+        }
+    }
 
     private void Update()
     {              
@@ -36,10 +61,11 @@ public class RangeAttack : MonoBehaviour
             }
             
         }
-
+        
         HandleAiming();
         HandleShooting();
         HandleReload();
+        UpdateAmmoUI();
 
     }
 
@@ -87,6 +113,44 @@ public class RangeAttack : MonoBehaviour
         {
             gunScript.Reload();
         }
+    }
+
+    public void UpdateAmmoUI()
+    {
+        if (ammoDisplay == null || gunScript == null) return;
+
+        int currentAmmo = gunScript.GetCurrentBullets();
+        int maxAmmo = gunScript.GetMaxMagazine();  
+
+        ammoDisplay.text = $"{currentAmmo} / {maxAmmo}";
+    }
+
+    private IEnumerator FadeInText(TMP_Text text, float duration)
+    {
+        float startAlpha = text.alpha;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            text.alpha = Mathf.Lerp(startAlpha, 1f, time / duration);
+            yield return null;
+        }
+        text.alpha = 1f;
+    }
+
+    private IEnumerator FadeOutText(TMP_Text text, float duration)
+    {
+        float startAlpha = text.alpha;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            text.alpha = Mathf.Lerp(startAlpha, 0f, time / duration);
+            yield return null;
+        }
+        text.alpha = 0f;
     }
 
 

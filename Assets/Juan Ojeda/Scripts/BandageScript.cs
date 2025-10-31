@@ -78,6 +78,7 @@ public class BandageScript : Item , IUsable
     public void AddAmount(int amount)
     {
         TotalAmount += amount;
+        gameObject.SetActive(true);
         if (inventory != null)
         {
             inventory.UpdateInventoryDis("Bandage", itemSprite, TotalAmount);

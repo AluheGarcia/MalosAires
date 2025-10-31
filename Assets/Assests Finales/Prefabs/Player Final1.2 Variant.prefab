@@ -726,6 +726,10 @@ PrefabInstance:
       value: -4.0306377
       objectReference: {fileID: 0}
     - target: {fileID: 6951740606934563278, guid: 5dc11dca9f1a31b408f82f3796722277, type: 3}
+      propertyPath: menuManagment
+      value: 
+      objectReference: {fileID: 920174288839430356}
+    - target: {fileID: 6951740606934563278, guid: 5dc11dca9f1a31b408f82f3796722277, type: 3}
       propertyPath: equippedItemHUD
       value: 
       objectReference: {fileID: 0}
@@ -827,6 +831,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5527042881067061400, guid: 5dc11dca9f1a31b408f82f3796722277, type: 3}
   m_PrefabInstance: {fileID: 5192900202626347466}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &920174288839430356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4960150508072345886, guid: 5dc11dca9f1a31b408f82f3796722277, type: 3}
+  m_PrefabInstance: {fileID: 5192900202626347466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755786163803781750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf11e322031d14041a6a609afbe85e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1285261985724419854 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6469079809920220868, guid: 5dc11dca9f1a31b408f82f3796722277, type: 3}
