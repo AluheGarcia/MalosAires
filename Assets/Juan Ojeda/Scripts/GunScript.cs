@@ -9,7 +9,7 @@ public class GunScript : Item
     
     [SerializeField] private GameObject BulletPrefab;
     public GameObject bulletPrefab => BulletPrefab;
-    private Transform BulletDirection;
+    [SerializeField] private Transform BulletDirection;
 
     private float FireRate = 0.5f;
     private float NextFireRate = 0f;
@@ -49,25 +49,25 @@ public class GunScript : Item
     {
         if (inventory == null)
         {
-            Debug.LogWarning("Inventory is null in GunScript.");
+            
             return;
         }
 
         PlayerAmmo playerAmmo = inventory.GetComponent<PlayerAmmo>();
         if (playerAmmo == null)
         {
-            Debug.LogWarning("PlayerAmmo component not found on the player.");
+            
             return;
         }
           
         
       int bulletsNeeded = MaxBulletCapacity - BulletinMagazine;
-        Debug.Log($"Intentando recargar. Necesita {bulletsNeeded} balas. PlayerAmmo: { playerAmmo.TotalAmmo}");
+       
 
         if (bulletsNeeded > 0 && playerAmmo.TryConsumeAmmo(bulletsNeeded))
         {
             BulletinMagazine = MaxBulletCapacity;
-            Debug.Log("Recargado completamente.");
+            
         }       
        
 

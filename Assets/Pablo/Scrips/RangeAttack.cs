@@ -4,7 +4,7 @@ using UnityEngine;
 public class RangeAttack : MonoBehaviour
 {
 
-    //[SerializeField] private GameObject Bullet;
+    [SerializeField] private GameObject Bullet;
     //[SerializeField] private GameObject BulletDirection;
     [SerializeField] private GameObject Gun;
     [SerializeField] private GameObject model;
@@ -17,9 +17,7 @@ public class RangeAttack : MonoBehaviour
     private float nextFireTime = 0f;
 
     private void Update()
-    {
-
-       
+    {              
 
         if (gunScript == null)
         {
