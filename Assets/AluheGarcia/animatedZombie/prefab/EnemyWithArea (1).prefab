@@ -6941,6 +6941,8 @@ GameObject:
   - component: {fileID: 416445985020081624}
   - component: {fileID: 5346853352966704359}
   - component: {fileID: 633553355931159839}
+  - component: {fileID: 2771295515212492126}
+  - component: {fileID: 8011232848049865653}
   m_Layer: 5
   m_Name: SlicePrefabZombieBase (1)
   m_TagString: Untagged
@@ -7043,6 +7045,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc88fd6fd7a94141bb57dd78c7c7587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &2771295515212492126
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602630249170373721}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8011232848049865653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602630249170373721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb601c4e0b9bc204293a2add9b537e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeStartDistance: 8
+  fadeEndDistance: 15
+  mainCamera: {fileID: 0}
 --- !u!1 &8696725609038876372
 GameObject:
   m_ObjectHideFlags: 0

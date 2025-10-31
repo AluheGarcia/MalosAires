@@ -14966,6 +14966,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8000016, y: 2.2166052, z: 0.16000016}
   m_Center: {x: 0.0037845988, y: 1.1083026, z: 0.017283343}
+--- !u!1 &712967775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7971689717211101182, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
+  m_PrefabInstance: {fileID: 1172442933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &720931470 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1928310266028209039, guid: 81293be662504f54fac01849d46dec60, type: 3}
@@ -21921,7 +21926,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4540259409570150983, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
   m_PrefabInstance: {fileID: 1172442933}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 712967775}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 463bb61235c29a842b43b9ea5f5c0db1, type: 3}
@@ -22784,10 +22789,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 235879495}
     m_Modifications:
     - target: {fileID: 784713632923355970, guid: dd00a398e9536eb42ac9d01879866699, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 18.307999
-      objectReference: {fileID: 0}
-    - target: {fileID: 784713632923355970, guid: dd00a398e9536eb42ac9d01879866699, type: 3}
       propertyPath: m_LocalPosition.x
       value: 239.49365
       objectReference: {fileID: 0}
@@ -22827,6 +22828,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2267795901331523398, guid: dd00a398e9536eb42ac9d01879866699, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 712967775}
+    - target: {fileID: 3600953435443987643, guid: dd00a398e9536eb42ac9d01879866699, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1783636050}
     - target: {fileID: 4887067039385213101, guid: dd00a398e9536eb42ac9d01879866699, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -44879,6 +44888,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8000016, y: 2.2166052, z: 0.16000016}
   m_Center: {x: 0.0037540812, y: 1.1083026, z: 0.017275713}
+--- !u!20 &1783636050 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1404686075159507834, guid: 52ce8ea450359c04a93abe8620f1d627, type: 3}
+  m_PrefabInstance: {fileID: 309382971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1783687904
 PrefabInstance:
   m_ObjectHideFlags: 0
