@@ -16,8 +16,6 @@ public class HealthBarManagerZombieBase : MonoBehaviour
         _sliderHealthBar = GetComponentInChildren<Slider>();
         _healthManager = GetComponentInParent<HealthManagerZombieBase>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         Transform cam = _camera.transform;
