@@ -13,33 +13,45 @@ public class InventoryBehaviour : MonoBehaviour
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject NearItem;
     private GameObject equippedItem = null;
+    public GameObject Equippeditem => equippedItem;
     private bool HasItem = false;
 
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
+    private KeyCode equippedKey = KeyCode.None;
+    public KeyCode EquippedKey => equippedKey;
     public Transform rightHand => RightHand;
     public List<GameObject> itemPrefabs => ItemPrefabs;
     public List<KeyCode> itemKeyLog => ItemKeyLog;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
-        Inventory[KeyCode.Alpha3] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        Inventory[KeyCode.Alpha4] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
+        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };       
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-    
-        // Script valido
+         
        
         ItemAddition ();
 
         EquippedItem ();
 
         DroppedItem();
+
+        if (equippedItem != null && Input.GetKeyDown(KeyCode.Q))
+        {
+            
+            IUsable usableItem = equippedItem.GetComponent<IUsable>();
+            if (usableItem != null)
+            {
+                usableItem.Use(gameObject);
+            }
+
+        }
+
 
     }
  
@@ -48,21 +60,60 @@ public class InventoryBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && NearItem != null)
         {
             Item item = NearItem.GetComponent<Item>();
+            if (item == null) return;
+
             KeyCode assignKey = item.GetAssignKey();
 
-            if (Inventory.ContainsKey(assignKey) && !Inventory[assignKey].HasItem)
+            AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
+            if ( ammoBox != null)
+            {
+                PlayerAmmo playerAmmo = GetComponent<PlayerAmmo>();
+                if (playerAmmo != null)
+                {
+                    playerAmmo.AddAmmo(ammoBox.ammoAmount);
+                    GetComponent<MenuManagment>()?.AddItemToInventory(
+                       item.itemName,
+                       item.itemSprite);
+                    NearItem.SetActive(false);
+                    NearItem = null;
+                    return;
+                }                
+            }
+
+            if (Inventory.ContainsKey(assignKey))
+            {
+                if (Inventory[assignKey].HasItem && item.itemName == "Bandage")
+                {
+                    return;
+                }
+
+                if (!Inventory[assignKey].HasItem)
                 {
                     Inventory[assignKey].HasItem = true;
 
                     GetComponent<MenuManagment>()?.AddItemToInventory(
                         item.itemName,
-                        item.itemSprite
-                    );
+                        item.itemSprite);
 
-                    Destroy(NearItem);
+                    NearItem.SetActive(false);
                     NearItem = null;
-                    
+
+                    return;
                 }
+
+                    
+                
+            }
+
+            if (!Inventory.ContainsKey(assignKey))
+            {
+                GetComponent<MenuManagment>()?.AddItemToInventory(
+                    item.itemName,
+                    item.itemSprite);
+
+                NearItem.SetActive(false);
+                NearItem = null;
+            }
             
         }
     }
@@ -81,7 +132,21 @@ public class InventoryBehaviour : MonoBehaviour
                 equippedItem = Instantiate(entry.Value.itemPrefab, RightHand);
                 equippedItem.transform.localPosition = Vector3.zero;
                 equippedItem.transform.localRotation = Quaternion.identity;
-                Debug.Log($"Equipado: {entry.Value.itemPrefab.name}");
+               
+
+                equippedKey = entry.Key;
+                               
+
+                Item itemScript = equippedItem.GetComponent<Item>();
+                if (itemScript != null)
+                {
+                    itemScript.SetInventory (this);
+                    itemScript.SetPrefab(entry.Value.itemPrefab);
+                   
+                }
+
+              
+
             }
         }
         
@@ -94,20 +159,42 @@ public class InventoryBehaviour : MonoBehaviour
             Vector3 dropPos = RightHand.position + RightHand.forward;
 
             Item itemComp = equippedItem.GetComponent<Item>();
-            KeyCode assignKey = itemComp.GetAssignKey();
+
+            if (itemComp != null)
+            {
+                KeyCode assignKey = itemComp.GetAssignKey();
+
             if (Inventory.ContainsKey(assignKey))
             {
                 Inventory[assignKey].HasItem = false;
+            }
+               Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
             }
             
             GameObject droppedItem = Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);            
 
             GetComponent<MenuManagment>()?.RemoveItemFromInventory(itemComp.itemName);
-            Destroy(equippedItem);
+            equippedItem.SetActive(false);
             equippedItem = null;
 
             Debug.Log("Item dropeado");
         }
+    }
+
+    public bool ContainsItem(GameObject prefab)
+    {
+        foreach (var slot in Inventory.Values)
+        {
+            Debug.Log($"[DEBUG] Slot prefab: {slot.itemPrefab?.name} ({slot.itemPrefab?.GetInstanceID()}) | HasItem: {slot.HasItem}");
+            if (slot.itemPrefab == prefab && slot.HasItem)
+                return true;
+        }
+        return false;
+    }
+
+    public bool IsItemEquipped(GameObject item)
+    {
+        return equippedItem == item;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -129,5 +216,17 @@ public class InventoryBehaviour : MonoBehaviour
         }
     }
 
-  
+    [System.Serializable]
+    public class InventorySlot
+    {
+        public GameObject itemPrefab;
+        public bool HasItem;
+        public InventorySlot(GameObject prefab)
+        {
+            itemPrefab = prefab;
+            HasItem = false;
+        }
+    }
 }
+
+

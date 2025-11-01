@@ -132,7 +132,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -152,5 +152,6 @@ MonoBehaviour:
   ItemRb: {fileID: 3332113446065839290}
   ItemPrefab: {fileID: 5166273097797659347}
   ItemName: Knife
-  ItemSprite: {fileID: 21300000, guid: 5375e760226d0cc4596e357179662dcc, type: 3}
+  ItemSprite: {fileID: 21300000, guid: b3bf99bd02783df4fa06142a527c1d32, type: 3}
   AssignKey: 50
+  damage: 15
