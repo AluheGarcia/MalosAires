@@ -17,6 +17,7 @@ public class WeaponSwitch : MonoBehaviour
         
         meleeAttack = GetComponent<MeleeAttack>();
         rangeAttack = GetComponent<RangeAttack>();
+        
     }
 
 

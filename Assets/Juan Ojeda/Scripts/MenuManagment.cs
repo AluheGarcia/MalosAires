@@ -8,6 +8,8 @@ public class MenuManagment : MonoBehaviour
 
     [SerializeField] GameObject InventoryMenu;
     private bool InventoryMenuActive;
+    [SerializeField] Sprite KnifeImg;
+    [SerializeField] Sprite GunImg;
     [SerializeField] Dictionary<string, Image> ItemsSlots = new Dictionary<string, Image>();
     [SerializeField] List<Image> SlotImages;
     [SerializeField] List <string> ItemNames;
@@ -24,7 +26,10 @@ public class MenuManagment : MonoBehaviour
         {
             ItemsSlots[ItemNames[i]] = SlotImages[i];
             SlotImages[i].gameObject.SetActive(false);
-                       
+
+            AddItemToInventory("Knife", KnifeImg);
+            AddItemToInventory("Gun", GunImg);
+
         }
         
     }
@@ -72,7 +77,7 @@ public class MenuManagment : MonoBehaviour
         {
             Slot.sprite = null;
             Slot.gameObject.SetActive(false);
-        }
+        }       
        
     }   
 

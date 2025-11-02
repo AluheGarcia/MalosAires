@@ -4,6 +4,8 @@ public class MateScript : Item, IUsable
 {
     [SerializeField] private int SipsAmount = 7;    
     public int sipsAmount => SipsAmount;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip drinkSound;
     [SerializeField] private float EnergyRestoreAmount = 25f;
     public void Use(GameObject user)
     {         
@@ -15,6 +17,13 @@ public class MateScript : Item, IUsable
         {
             stamina.RestoreStaminaByDrink(EnergyRestoreAmount);
             SipsAmount--;
+
+            if (drinkSound != null)
+            {
+                AudioSource.PlayClipAtPoint(drinkSound, user.transform.position, 1f);
+            }
+
+
             KeyCode assignedKey = GetAssignKey();
 
             if (inventory.Inventory.ContainsKey(assignedKey))

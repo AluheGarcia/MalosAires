@@ -1,16 +1,21 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BandageScript : Item , IUsable
 
 {
     private int TotalAmount = 3;
-    public int totalAmount => TotalAmount;
+    public int totalAmount => TotalAmount;    
+    [SerializeField] private AudioClip Bandage;
+    
 
     private void Start()
     {
        inventory = GetComponentInParent<InventoryBehaviour>();
+                    
     }
+
     public void Use(GameObject user)
     {       
        
@@ -29,6 +34,11 @@ public class BandageScript : Item , IUsable
            
             playerLife.RestoreLife();
             TotalAmount--;
+
+            if (Bandage != null)
+            {
+                AudioSource.PlayClipAtPoint(Bandage, user.transform.position, 1f);
+            }
 
             KeyCode assignedKey = GetAssignKey();
 
@@ -51,13 +61,28 @@ public class BandageScript : Item , IUsable
             {
                 if (inventory.Inventory.ContainsKey(assignedKey))
                 {
-                    inventory.Inventory[assignedKey].HasItem = false;
+                    inventory.Inventory[assignedKey].HasItem = false;                    
                     gameObject.SetActive(false);
                 }
                    
             }
+
+            if (inventory != null)
+            {
+                inventory.UpdateInventoryDis("Bandage", itemSprite, TotalAmount);
+            }
         }                    
                 
+    }
+
+    public void AddAmount(int amount)
+    {
+        TotalAmount += amount;
+        gameObject.SetActive(true);
+        if (inventory != null)
+        {
+            inventory.UpdateInventoryDis("Bandage", itemSprite, TotalAmount);
+        }
     }
 
    public int GetRemainingAmount() => TotalAmount;

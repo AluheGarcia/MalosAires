@@ -1,50 +1,157 @@
 
 using UnityEngine;
+using TMPro;
+using System.Collections;
 
 public class RangeAttack : MonoBehaviour
 {
 
-    [SerializeField] private GameObject Bullet;
-    [SerializeField] private GameObject BulletDirection;
+    [SerializeField] private GameObject Bullet;  
     [SerializeField] private GameObject Gun;
     [SerializeField] private GameObject model;
-    [SerializeField] private GameObject player;     
-    [SerializeField] private InventoryBehaviour inventory;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GunScript gunScript;
 
-    private GunScript gunScript;
+    [SerializeField] private GameObject crosshair;
+    [SerializeField] private TMP_Text ammoDisplay;
+
     private bool aiming;
 
-    private float fireRate = 0.7f;
+    
     private float nextFireTime = 0f;
 
-    private void Update()
+    private void OnEnable()
     {
-
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime && aiming == true)
+        if (crosshair != null)
+            crosshair.SetActive(true);
+        if (ammoDisplay != null)
         {
-
-            nextFireTime = Time.time + fireRate;
-
-            Instantiate(Bullet, BulletDirection.transform.position, BulletDirection.transform.rotation);
-     //       Gun.SetActive(true);
-            model.GetComponent<PlayerAnimController>().Shooting();
-
+            StartCoroutine(FadeInText(ammoDisplay, 0.5f));
         }
-      
+    }
+
+    private void OnDisable()
+    {
+        if (crosshair != null)
+            crosshair.SetActive(false);
+
+        if (ammoDisplay != null)
+        {
+            StartCoroutine(FadeOutText(ammoDisplay, 0.5f));
+        }
+    }
+
+    private void Update()
+    {              
+
+        if (gunScript == null)
+        {
+            
+            gunScript = GetComponentInChildren<GunScript>(true);
+            
+            if (gunScript == null)
+                return; 
+        }
+        if (gunScript != null && gunScript.inv == null) 
+        {
+            var inv = player.GetComponent<InventoryBehaviour>();
+            if (inv != null)
+            {
+                gunScript.SetInventory(inv);
+            }
+            
+        }
+        
+        HandleAiming();
+        HandleShooting();
+        HandleReload();
+        UpdateAmmoUI();
+
+    }
+
+    private void HandleAiming()
+    {
         aiming = Input.GetMouseButton(1);
 
-        if (aiming == true)
+        var anim = model.GetComponent<PlayerAnimController>();
+        var movement = player.GetComponent<PlayerMovement>();
+
+        if (aiming)
         {
-            model.GetComponent<PlayerAnimController>().Aiming();
-            player.GetComponent<PlayerMovement>().Aiming();
+            anim?.Aiming();
+            movement?.Aiming();
         }
         else
         {
-            model.GetComponent<PlayerAnimController>().StopAiming();
-            player.GetComponent<PlayerMovement>().NotAiming();
+            anim?.StopAiming();
+            movement?.NotAiming();
         }
-
     }
-   
+
+    private void HandleShooting()
+    {
+        if (!aiming) return;
+        if (Input.GetButton("Fire1") && gunScript.CanShoot())
+        {
+            gunScript.ConsumeBullet();
+
+            Transform muzzle = gunScript.GetMuzzle();
+            GameObject bulletPrefab = gunScript.GetBulletPrefab();
+
+            if (muzzle != null && bulletPrefab != null)
+            {
+                Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+            }
+
+            model.GetComponent<PlayerAnimController>()?.Shooting();
+        }
+    }
+
+    private void HandleReload()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gunScript.Reload();
+        }
+    }
+
+    public void UpdateAmmoUI()
+    {
+        if (ammoDisplay == null || gunScript == null) return;
+
+        int currentAmmo = gunScript.GetCurrentBullets();
+        int maxAmmo = gunScript.GetMaxMagazine();  
+
+        ammoDisplay.text = $"{currentAmmo} / {maxAmmo}";
+    }
+
+    private IEnumerator FadeInText(TMP_Text text, float duration)
+    {
+        float startAlpha = text.alpha;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            text.alpha = Mathf.Lerp(startAlpha, 1f, time / duration);
+            yield return null;
+        }
+        text.alpha = 1f;
+    }
+
+    private IEnumerator FadeOutText(TMP_Text text, float duration)
+    {
+        float startAlpha = text.alpha;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            text.alpha = Mathf.Lerp(startAlpha, 0f, time / duration);
+            yield return null;
+        }
+        text.alpha = 0f;
+    }
+
 
 }
