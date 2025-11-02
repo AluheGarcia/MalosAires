@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,15 +14,25 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
 
     public Transform orientation;
+    private PlayerStamina Stamina;
+
 
     float horizontalInput;
     float verticalInput;
     
+
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
-    
 
 
+    [SerializeField] private GameObject model;
+    private bool sprint;
+    private bool aiming;
+    private bool attacking;
+    private bool walking;
+    private bool walkingBack;
+    private bool sidewalk;
+    private bool switching;
 
     Vector3 moveDirection;
 
@@ -33,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        Stamina = GetComponent<PlayerStamina>();
 
     }
 
@@ -47,7 +61,122 @@ public class PlayerMovement : MonoBehaviour
             rb.linearDamping = groundDrag;
         else
             rb.linearDamping = 0;
+
+
+
+        //FUNCIONES DE ANIMACION
+
+        if (verticalInput > 0)
+        {
+            model.GetComponent<PlayerAnimController>().Walking();
+            walking = true;
+        }
+
+       if (verticalInput == 0)
+        {
+            model.GetComponent<PlayerAnimController>().Still();
+            walking = false;
+        }
+
+        if (verticalInput < 0)
+        {
+            model.GetComponent<PlayerAnimController>().WalkingBack();
+            walkingBack = true;
+        }
+        
+        if (horizontalInput > 0)
+        {
+            model.GetComponent<PlayerAnimController>().WalkingRight();
+            sidewalk = true;
+        }
+
+        if (horizontalInput < 0)
+        {
+            model.GetComponent<PlayerAnimController>().WalkingLeft();
+            sidewalk = true;
+        }
+
+
+
+        if (verticalInput == 0 & horizontalInput == 0)
+        {
+            model.GetComponent<PlayerAnimController>().Still();
+            walking = false;
+            sidewalk = false;
+        }
+
+
+        if (!attacking && !aiming && !switching)
+        {
+            if (Stamina.IsSprinting && walking)
+            {
+                moveSpeed = 4;
+                model.GetComponent<PlayerAnimController>().Sprint();
+            }
+            else if (walking)
+            {
+                moveSpeed = 1.5f;
+                model.GetComponent<PlayerAnimController>().Walking();
+            }
+            else if (sidewalk)
+            {
+                moveSpeed = 1f;
+                model.GetComponent<PlayerAnimController>().WalkingRight();
+            }
+            else if (verticalInput < 0)
+            {                
+                model.GetComponent<PlayerAnimController>().WalkingBack();
+            }
+            else if (verticalInput == 0)
+            {
+                walkingBack = false;
+                model.GetComponent<PlayerAnimController>().Still();
+            }
+            
+            
+        }
+
+        else
+        { 
+         moveSpeed = 0f;
+        }
+        
+        
     }
+
+
+
+    public void Aiming()
+    {
+        aiming = true;
+    }
+    public void NotAiming()
+    {
+        aiming = false;
+    }
+    public void Attacking()
+    {
+        attacking = true;
+    }
+    public void NotAttacking()
+    {
+        attacking = false;
+    }
+    public void Switching()
+    {
+        switching = true;
+    }
+    public void NotSwitching()
+    {
+        switching = false;
+    }
+
+    public void NormalSpeed()
+    {
+        moveSpeed = 1.5f;
+    }
+
+
 
     private void FixedUpdate()
     {
@@ -59,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        sprint = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void MovePlayer()

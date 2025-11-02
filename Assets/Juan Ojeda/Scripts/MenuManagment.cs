@@ -12,7 +12,11 @@ public class MenuManagment : MonoBehaviour
     [SerializeField] List<Image> SlotImages;
     [SerializeField] List <string> ItemNames;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip inventoryOpenSound;
+    [SerializeField] private AudioClip inventoryCloseSound;
+
+
     void Awake()
     {
        ItemsSlots.Clear();
@@ -20,56 +24,57 @@ public class MenuManagment : MonoBehaviour
         {
             ItemsSlots[ItemNames[i]] = SlotImages[i];
             SlotImages[i].gameObject.SetActive(false);
+                       
+        }
+        
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInventory();
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I) && InventoryMenuActive)
-        {
-            Time.timeScale = 1f;
-            InventoryMenu.SetActive(false);
-            InventoryMenuActive = false;
-        }
+        InventoryMenuActive = !InventoryMenuActive;
+        InventoryMenu.SetActive(InventoryMenuActive);
+        Time.timeScale = InventoryMenuActive ? 0f : 1f;
 
-        else if (Input.GetKeyDown(KeyCode.I) && !InventoryMenuActive)
+        if (audioSource != null)
         {
-            Time.timeScale = 0f;
-            InventoryMenu.SetActive(true);
-            InventoryMenuActive = true;
+            AudioClip clipToPlay = InventoryMenuActive ? inventoryOpenSound : inventoryCloseSound;
+            if (clipToPlay != null)
+            {
+                audioSource.PlayOneShot(clipToPlay);
+            }
         }
-
     }
 
     public void AddItemToInventory(string ItemName, Sprite ItemSprite)
     {
-        Debug.Log("Intentando agregar {ItemName} al inventario. Sprite nulo: {ItemSprite == null}");
+        
         if (ItemsSlots.TryGetValue(ItemName, out Image Slot))
         {
             Slot.sprite = ItemSprite;
             Slot.gameObject.SetActive(true);
             
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró un slot para el item: {ItemName}");
-        }
+       
 
     }
-public void RemoveItemFromInventory(string ItemName)
+    public void RemoveItemFromInventory(string ItemName)
     {
         if (ItemsSlots.TryGetValue(ItemName, out Image Slot))
         {
             Slot.sprite = null;
             Slot.gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró un slot para el item: {ItemName}");
-        }
-    }
+       
+    }   
 
 
 }

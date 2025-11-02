@@ -13,10 +13,11 @@ public abstract class Item : MonoBehaviour
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private string ItemName;
     [SerializeField] private Sprite ItemSprite;
+   
     [SerializeField] protected KeyCode AssignKey;
 
     protected bool PlayerInRange = false;
-    protected InventoryBehaviour inventory;
+    protected InventoryBehaviour inventory;   
 
     // Variables publicas pero no editables por otro 
 
@@ -25,19 +26,6 @@ public abstract class Item : MonoBehaviour
     public string itemName => ItemName;
 
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-              
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {               
-
-    }
 
     public KeyCode GetAssignKey()
     {
@@ -77,5 +65,16 @@ public abstract class Item : MonoBehaviour
         }
     }
 
+    public void SetInventory(InventoryBehaviour Inv)
+    {
+        inventory = Inv;
+    }
+
+    public void SetPrefab (GameObject prefab)
+    {
+       typeof(Item)
+            .GetField("ItemPrefab", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+            .SetValue(this, prefab);
+    }
 
 }
