@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 26313902}
-  fadeDuration: 3
+  defaultFadeDuration: 1.5
 --- !u!114 &26313902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -743,6 +743,8 @@ MonoBehaviour:
   logoSound: {fileID: 8300000, guid: 6264ee91484dfea4585d98d4cc9ecf15, type: 3}
   menuMusic: {fileID: 8300000, guid: 626ceb5bfa22dfd448d20ab0f54cd5c0, type: 3}
   logoDisplayTime: 3
+  gameSceneName: Level1
+  quickFadeDuration: 0.6
 --- !u!4 &314151058
 Transform:
   m_ObjectHideFlags: 0
