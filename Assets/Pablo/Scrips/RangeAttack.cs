@@ -6,10 +6,12 @@ public class RangeAttack : MonoBehaviour
 
     [SerializeField] private GameObject Bullet;
     [SerializeField] private GameObject BulletDirection;
+    [SerializeField] private GameObject Gun;
     [SerializeField] private GameObject model;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject player;     
+    [SerializeField] private InventoryBehaviour inventory;
 
-
+    private GunScript gunScript;
     private bool aiming;
 
     private float fireRate = 0.7f;
@@ -24,13 +26,11 @@ public class RangeAttack : MonoBehaviour
             nextFireTime = Time.time + fireRate;
 
             Instantiate(Bullet, BulletDirection.transform.position, BulletDirection.transform.rotation);
-
+     //       Gun.SetActive(true);
             model.GetComponent<PlayerAnimController>().Shooting();
 
         }
-
-
-
+      
         aiming = Input.GetMouseButton(1);
 
         if (aiming == true)
@@ -45,5 +45,6 @@ public class RangeAttack : MonoBehaviour
         }
 
     }
+   
 
 }

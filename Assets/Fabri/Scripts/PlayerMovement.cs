@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool aiming;
     private bool attacking;
     private bool walking;
+    private bool walkingBack;
     private bool sidewalk;
     private bool switching;
 
@@ -69,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
             model.GetComponent<PlayerAnimController>().Walking();
             walking = true;
         }
-        else
+
+       if (verticalInput == 0)
         {
             model.GetComponent<PlayerAnimController>().Still();
             walking = false;
@@ -78,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if (verticalInput < 0)
         {
             model.GetComponent<PlayerAnimController>().WalkingBack();
+            walkingBack = true;
         }
         
         if (horizontalInput > 0)
@@ -119,10 +123,17 @@ public class PlayerMovement : MonoBehaviour
                 moveSpeed = 1f;
                 model.GetComponent<PlayerAnimController>().WalkingRight();
             }
-            else
+            else if (verticalInput < 0)
+            {                
+                model.GetComponent<PlayerAnimController>().WalkingBack();
+            }
+            else if (verticalInput == 0)
             {
+                walkingBack = false;
                 model.GetComponent<PlayerAnimController>().Still();
             }
+            
+            
         }
 
         else

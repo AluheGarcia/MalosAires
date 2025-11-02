@@ -11,6 +11,7 @@ public class GunScript : Item
 
     private float FireRate = 0.5f;
     private float NextFireRate = 0f;
+
     
 
     private void Start()
@@ -26,25 +27,40 @@ public class GunScript : Item
        
     }
 
-    private void Update()
-    {
-        if (inventory == null || inventory.Equippeditem != gameObject)
-        {
-            return; 
-        }
+    //private void Update()
+    //{
+    //    if (inventory == null || inventory.Equippeditem != gameObject)
+    //    {
+    //        return; 
+    //    }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+    //    if (Input.GetButtonDown("Fire1"))
+    //    {
+    //        Shoot();
+    //    }
        
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
+    //    if (Input.GetKeyDown(KeyCode.R))
+    //    {
+    //        Reload();
+    //    }
         
+    //}
+
+    public bool CanShoot()
+    {
+        return BulletinMagazine > 0 && Time.time >= NextFireRate;
     }
+
+    public void ConsumeBullet()
+    {
+        BulletinMagazine--;
+        NextFireRate = Time.time + FireRate;
+    }
+
+    public Transform GetMuzzle() => BulletDirection;
+    public GameObject GetBulletPrefab() => BulletPrefab;
+
 
     public void Reload()
     {

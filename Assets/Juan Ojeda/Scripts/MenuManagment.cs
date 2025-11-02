@@ -12,7 +12,11 @@ public class MenuManagment : MonoBehaviour
     [SerializeField] List<Image> SlotImages;
     [SerializeField] List <string> ItemNames;
 
-   
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip inventoryOpenSound;
+    [SerializeField] private AudioClip inventoryCloseSound;
+
+
     void Awake()
     {
        ItemsSlots.Clear();
@@ -20,26 +24,34 @@ public class MenuManagment : MonoBehaviour
         {
             ItemsSlots[ItemNames[i]] = SlotImages[i];
             SlotImages[i].gameObject.SetActive(false);
+                       
         }
-
+        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && InventoryMenuActive)
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            Time.timeScale = 1f;
-            InventoryMenu.SetActive(false);
-            InventoryMenuActive = false;
+            ToggleInventory();
         }
 
-        else if (Input.GetKeyDown(KeyCode.I) && !InventoryMenuActive)
-        {
-            Time.timeScale = 0f;
-            InventoryMenu.SetActive(true);
-            InventoryMenuActive = true;
-        }
+    }
 
+    public void ToggleInventory()
+    {
+        InventoryMenuActive = !InventoryMenuActive;
+        InventoryMenu.SetActive(InventoryMenuActive);
+        Time.timeScale = InventoryMenuActive ? 0f : 1f;
+
+        if (audioSource != null)
+        {
+            AudioClip clipToPlay = InventoryMenuActive ? inventoryOpenSound : inventoryCloseSound;
+            if (clipToPlay != null)
+            {
+                audioSource.PlayOneShot(clipToPlay);
+            }
+        }
     }
 
     public void AddItemToInventory(string ItemName, Sprite ItemSprite)
@@ -54,7 +66,7 @@ public class MenuManagment : MonoBehaviour
        
 
     }
-public void RemoveItemFromInventory(string ItemName)
+    public void RemoveItemFromInventory(string ItemName)
     {
         if (ItemsSlots.TryGetValue(ItemName, out Image Slot))
         {
@@ -62,7 +74,7 @@ public void RemoveItemFromInventory(string ItemName)
             Slot.gameObject.SetActive(false);
         }
        
-    }
+    }   
 
 
 }

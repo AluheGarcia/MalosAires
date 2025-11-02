@@ -22,7 +22,7 @@ public class KnifeScript : Item
     }
         
 
-    private void PerformAttack(GameObject user)
+    public void PerformAttack(GameObject user)
     { 
         float attackRange = 1.5f;
         float attackRadius = 0.5f;
@@ -41,8 +41,7 @@ public class KnifeScript : Item
             HealthManagerZombieBase zombieHealth = hit.GetComponent<HealthManagerZombieBase>();
 
             if (zombieHealth != null)
-            {
-                
+            {                
                 zombieHealth.TakeMeleeDamage();
             }
         }
