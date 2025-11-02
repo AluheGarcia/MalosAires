@@ -3,11 +3,11 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
 
-    private int speed = 20;
+    private int speed = 40;
 
     void Start()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 5);
     }
 
 

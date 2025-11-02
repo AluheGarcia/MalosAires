@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class GunScript : Item
@@ -7,16 +8,17 @@ public class GunScript : Item
     [SerializeField] private int totalAmmo = 0;
     
     [SerializeField] private GameObject BulletPrefab;
-    private Transform BulletDirection;
+    public GameObject bulletPrefab => BulletPrefab;
+    [SerializeField] private Transform BulletDirection;
 
     private float FireRate = 0.5f;
     private float NextFireRate = 0f;
+
     
 
     private void Start()
     {
-        inventory = GetComponentInParent<InventoryBehaviour>();
-        BulletinMagazine = 0;
+        inventory = GetComponentInParent<InventoryBehaviour>();        
         Transform boca = transform.Find("Boca");
 
         if (boca != null)
@@ -26,67 +28,51 @@ public class GunScript : Item
        
     }
 
-    private void Update()
+  
+    public bool CanShoot()
     {
-        if (inventory == null || inventory.Equippeditem != gameObject)
-        {
-            return; 
-        }
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-       
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
-        
+        return BulletinMagazine > 0 && Time.time >= NextFireRate;
     }
+
+    public void ConsumeBullet()
+    {
+        BulletinMagazine--;
+        NextFireRate = Time.time + FireRate;
+    }
+
+    public Transform GetMuzzle() => BulletDirection;
+    public GameObject GetBulletPrefab() => BulletPrefab;
+
 
     public void Reload()
     {
-       PlayerAmmo playerAmmo = inventory.GetComponent<PlayerAmmo>();
-        if (playerAmmo == null)
-        
-          return;
-        
-      int bulletesNeeded = MaxBulletCapacity - BulletinMagazine;
+        if (inventory == null)
+        {
+            
+            return;
+        }
 
-        if (bulletesNeeded > 0 && playerAmmo.TryConsumeAmmo(bulletesNeeded))
+        PlayerAmmo playerAmmo = inventory.GetComponent<PlayerAmmo>();
+        if (playerAmmo == null)
+        {
+            
+            return;
+        }
+          
+        
+      int bulletsNeeded = MaxBulletCapacity - BulletinMagazine;
+       
+
+        if (bulletsNeeded > 0 && playerAmmo.TryConsumeAmmo(bulletsNeeded))
         {
             BulletinMagazine = MaxBulletCapacity;
-        }
-        
-
-    }
-
-    
-    public void Shoot()
-    {
-        if (BulletinMagazine <= 0)
-        {
-           return;
-        }
-
-        NextFireRate = Time.time + FireRate;
-
-        if (BulletDirection == null)
-        {                     
-          return;
-        }
-
-        BulletinMagazine--;
-
-        if (BulletPrefab != null && BulletDirection != null)
-        {
-            GameObject Bullet = Instantiate(BulletPrefab, BulletDirection.position, BulletDirection.rotation);
-        }
+            
+        }       
        
-    }
 
-    
+    }
+     public int GetCurrentBullets() => BulletinMagazine;
+     public int GetMaxMagazine() => MaxBulletCapacity;     
+       
 
 }

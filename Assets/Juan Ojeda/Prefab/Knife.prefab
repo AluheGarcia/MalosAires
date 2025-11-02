@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &155081855318471251
 Transform:
   m_ObjectHideFlags: 0
@@ -153,4 +153,5 @@ MonoBehaviour:
   ItemPrefab: {fileID: 5166273097797659347}
   ItemName: Knife
   ItemSprite: {fileID: 21300000, guid: b3bf99bd02783df4fa06142a527c1d32, type: 3}
-  AssignKey: 50
+  AssignKey: 322
+  damage: 15

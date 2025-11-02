@@ -1,41 +1,91 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BandageScript : Item , IUsable
 
 {
     private int TotalAmount = 3;
+    public int totalAmount => TotalAmount;    
+    [SerializeField] private AudioClip Bandage;
+    
 
     private void Start()
     {
        inventory = GetComponentInParent<InventoryBehaviour>();
+                    
     }
+
     public void Use(GameObject user)
     {       
        
-
-
         LifeCountScript playerLife = user.GetComponentInChildren<LifeCountScript>();
-       
+        InventoryBehaviour inventory = user.GetComponent<InventoryBehaviour>();
+        EquippedItemHUD hud = user.GetComponentInChildren<EquippedItemHUD>();
+
+        if (playerLife.GetCurrentLives() >= playerLife.GetMaxLives())
+        {
+            return;
+        }
+                
+
         if (playerLife != null && TotalAmount > 0)
         {            
            
             playerLife.RestoreLife();
-            
-        }
-        TotalAmount--;
+            TotalAmount--;
 
-        InventoryBehaviour inventory = user.GetComponent<InventoryBehaviour>();
+            if (Bandage != null)
+            {
+                AudioSource.PlayClipAtPoint(Bandage, user.transform.position, 1f);
+            }
 
-        if (TotalAmount <= 0 && inventory != null)
-        {
             KeyCode assignedKey = GetAssignKey();
+
             if (inventory.Inventory.ContainsKey(assignedKey))
             {
-                inventory.Inventory[assignedKey].HasItem = false;
+                inventory.Inventory[assignedKey].itemAmount = TotalAmount;               
             }
-            Destroy(gameObject);
+
+            if (hud != null)
+            {
+                if (TotalAmount > 0)
+                    hud.UpdateDisplay(itemSprite, TotalAmount);
+                else
+                {
+                    hud.ClearDisplay();
+                }
+            }
+
+            if (TotalAmount <= 0 && inventory != null)
+            {
+                if (inventory.Inventory.ContainsKey(assignedKey))
+                {
+                    inventory.Inventory[assignedKey].HasItem = false;                    
+                    gameObject.SetActive(false);
+                }
+                   
+            }
+
+            if (inventory != null)
+            {
+                inventory.UpdateInventoryDis("Bandage", itemSprite, TotalAmount);
+            }
+        }                    
+                
+    }
+
+    public void AddAmount(int amount)
+    {
+        TotalAmount += amount;
+        gameObject.SetActive(true);
+        if (inventory != null)
+        {
+            inventory.UpdateInventoryDis("Bandage", itemSprite, TotalAmount);
         }
     }
 
-    
+   public int GetRemainingAmount() => TotalAmount;
+   public void SetTotalAmount(int amount) => TotalAmount = amount;   
+
 }
