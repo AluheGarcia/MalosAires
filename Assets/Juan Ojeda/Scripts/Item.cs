@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public abstract class Item : MonoBehaviour
 {
-    // Script base para cada item
 
     [SerializeField] protected Rigidbody ItemRb;
     [SerializeField] private GameObject ItemPrefab;
@@ -18,9 +17,7 @@ public abstract class Item : MonoBehaviour
 
     protected bool PlayerInRange = false;
     protected InventoryBehaviour inventory;   
-    public InventoryBehaviour inv => inventory;
-
-    // Variables publicas pero no editables por otro 
+    public InventoryBehaviour inv => inventory;    
 
     public GameObject itemPrefab => ItemPrefab;
     public Sprite itemSprite => ItemSprite;

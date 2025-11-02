@@ -18,8 +18,7 @@ public class GunScript : Item
 
     private void Start()
     {
-        inventory = GetComponentInParent<InventoryBehaviour>();
-        //BulletinMagazine = 0;
+        inventory = GetComponentInParent<InventoryBehaviour>();        
         Transform boca = transform.Find("Boca");
 
         if (boca != null)
