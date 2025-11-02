@@ -18,10 +18,10 @@ public class TextTriggerManager : MonoBehaviour
         triggerTexts = new Dictionary<string, string>
         {
             { "Tuto1", "WASD - Movimiento / Mouse - Mirar" },
-            { "Tuto2", "Recoge el cuchillo con la tecla E " },
-            { "Tuto3", "Mouse 1 para atacar" },
-            { "Tuto4", "Recoge las vendas y curate" },
-            { "Tuto5", "Recoge la pistola" },
+            { "Tuto2", "Mouse 1 para atacar" },
+            { "Tuto3", "Recoge las vendas y curate" },
+            { "Tuto4", "puedes tomar el mate para recuperar estamina" },
+            { "Tuto5", "Recoge la munición" },
             { "Tuto6", "SampleText" },
             { "Tuto7", "SampleText" },
             { "Tuto8", "SampleText" },

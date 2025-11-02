@@ -5651,7 +5651,7 @@ GameObject:
   - component: {fileID: 396685707161837325}
   m_Layer: 0
   m_Name: EnemyWithArea (1)
-  m_TagString: Enemy
+  m_TagString: EnemyExp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
