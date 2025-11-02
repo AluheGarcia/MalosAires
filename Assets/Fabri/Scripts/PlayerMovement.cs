@@ -24,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
 
+    [SerializeField] private float stepHeight = 0.3f;
+    [SerializeField] private float stepCheckDistance = 0.5f;
+    [SerializeField] private Transform footOrigin;
+
+
 
     [SerializeField] private GameObject model;
     private bool sprint;
@@ -62,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.linearDamping = 0;
 
+        
 
 
         //FUNCIONES DE ANIMACION
@@ -180,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckForStep();
         MovePlayer();
     }
 
@@ -249,5 +256,26 @@ public class PlayerMovement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
+
+    private void CheckForStep()
+    {
+        Vector3 direction = orientation.forward;
+
+        
+        Vector3 rayStartLow = footOrigin.position + Vector3.up * 0.05f;
+        bool hitLow = Physics.Raycast(rayStartLow, direction, out RaycastHit hit, stepCheckDistance);
+
+        
+        Vector3 rayStartHigh = footOrigin.position + Vector3.up * stepHeight;
+        bool hitHigh = Physics.Raycast(rayStartHigh, direction, stepCheckDistance);
+
+        
+
+        if (hitLow && !hitHigh)
+        {
+            rb.position += Vector3.up * stepHeight;
+        }
+    }
+
 
 }
