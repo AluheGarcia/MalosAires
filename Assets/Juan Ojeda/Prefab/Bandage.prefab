@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5425938e71cbeb54cb15e7681f4b0cb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,6 @@ MonoBehaviour:
   ItemName: Bandage
   ItemSprite: {fileID: 21300000, guid: 21ce0de8b5696f448b5431806b5aa149, type: 3}
   AssignKey: 50
-  audioSource: {fileID: 4521401186296129120}
   Bandage: {fileID: 8300000, guid: 2f7b7f130e7b04e4d9290ef625bbc975, type: 3}
 --- !u!54 &6176393162261035165
 Rigidbody:
