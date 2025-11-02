@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 guid: ed020674e9d50f04f8c37ee7a06bd655
+=======
+guid: fd72415c2a8f3164b952d1f6ecc78367
+>>>>>>> Stashed changes
 =======
 guid: fd72415c2a8f3164b952d1f6ecc78367
 >>>>>>> Stashed changes
@@ -42,8 +46,13 @@ TextureImporter:
     aniso: 1
     mipBias: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     wrapU: 1
     wrapV: 1
+=======
+    wrapU: 0
+    wrapV: 0
+>>>>>>> Stashed changes
 =======
     wrapU: 0
     wrapV: 0
@@ -58,7 +67,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   spritePixelsToUnits: 100
+=======
+  spritePixelsToUnits: 16
+>>>>>>> Stashed changes
 =======
   spritePixelsToUnits: 16
 >>>>>>> Stashed changes
@@ -86,7 +99,11 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     textureCompression: 1
+=======
+    textureCompression: 0
+>>>>>>> Stashed changes
 =======
     textureCompression: 0
 >>>>>>> Stashed changes
@@ -118,6 +135,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         x: 24
         y: 10
         width: 792
@@ -126,6 +144,8 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 7}
 =======
+=======
+>>>>>>> Stashed changes
         x: 27
         y: 10
         width: 809
@@ -133,6 +153,9 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 28, w: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       customData: 
       outline: []
@@ -140,8 +163,13 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       spriteID: bbb0915490eb81f449974d44cd024815
       internalID: 1801096254
+=======
+      spriteID: c0983b6600e1e4c43b46ce26ed1c4d2f
+      internalID: 1335000205
+>>>>>>> Stashed changes
 =======
       spriteID: c0983b6600e1e4c43b46ce26ed1c4d2f
       internalID: 1335000205
@@ -155,7 +183,11 @@ TextureImporter:
     physicsShape: []
     bones: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     spriteID: c58abdedc4cf87e4ba71e1ff97faef7c
+=======
+    spriteID: 777ebdf6089819f428f111d693257d75
+>>>>>>> Stashed changes
 =======
     spriteID: 777ebdf6089819f428f111d693257d75
 >>>>>>> Stashed changes
@@ -169,7 +201,11 @@ TextureImporter:
       entries: []
     nameFileIdTable:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       BottomFrame_0: 1801096254
+=======
+      BottomFrame_0: 1335000205
+>>>>>>> Stashed changes
 =======
       BottomFrame_0: 1335000205
 >>>>>>> Stashed changes
