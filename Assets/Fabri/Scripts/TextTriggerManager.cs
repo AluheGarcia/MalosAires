@@ -21,7 +21,11 @@ public class TextTriggerManager : MonoBehaviour
             { "Tuto2", "Recoge el cuchillo con la tecla E " },
             { "Tuto3", "Mouse 1 para atacar" },
             { "Tuto4", "Recoge las vendas y curate" },
-            { "Tuto5", "Recoge la pistola" }
+            { "Tuto5", "Recoge la pistola" },
+            { "Tuto6", "SampleText" },
+            { "Tuto7", "SampleText" },
+            { "Tuto8", "SampleText" },
+            { "Tuto9", "SampleText" }
         };
     }
 
