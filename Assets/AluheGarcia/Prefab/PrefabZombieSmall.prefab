@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 8621051724473125380}
   - component: {fileID: 6074005435922707106}
   - component: {fileID: 1108629257687240182}
-  - component: {fileID: 7314583335034864919}
   m_Layer: 0
   m_Name: PrefabZombieSmall
   m_TagString: Enemy
@@ -219,6 +218,7 @@ MonoBehaviour:
   health: 75
   MeleeDamage: 25
   RangeDamage: 50
+  animator: {fileID: 0}
 --- !u!114 &1236176350731159913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f02db6170c67294d88aad59f5038a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!54 &8621051724473125380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -293,28 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f6163844cc04104d88797c3a040dfac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &7314583335034864919
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345928792769822729}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 4
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &7538025717794769792
 GameObject:
   m_ObjectHideFlags: 0
