@@ -181,7 +181,7 @@ public class IntroManagerDotween : MonoBehaviour
     // Método de carga asíncrona (Corrutina)
     private IEnumerator LoadGameSceneAsync(string sceneName)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
         asyncLoad.allowSceneActivation = false;
 
         while (asyncLoad.progress < 0.9f)

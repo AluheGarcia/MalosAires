@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0.4627451}
+  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0.4627451}
+  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -541,7 +541,7 @@ Transform:
   m_GameObject: {fileID: 5272973175936962042}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.0320015, z: 0.139}
+  m_LocalPosition: {x: 0, y: -1.102, z: 0.053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0.4627451}
+  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0.4627451}
+  m_Color: {r: 0.5390428, g: 0.7924528, b: 0.51957995, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1692,15 +1692,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395580860175390056, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 382.492
+      value: 382.378
       objectReference: {fileID: 0}
     - target: {fileID: 7395580860175390056, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.072
+      value: 4.283
       objectReference: {fileID: 0}
     - target: {fileID: 7395580860175390056, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -60.553
+      value: -60.95
       objectReference: {fileID: 0}
     - target: {fileID: 7395580860175390056, guid: fc15d4e26e1e6a54d8315f0551e16e88, type: 3}
       propertyPath: m_LocalRotation.w

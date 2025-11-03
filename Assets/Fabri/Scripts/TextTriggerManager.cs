@@ -19,12 +19,12 @@ public class TextTriggerManager : MonoBehaviour
         {
             { "Tuto1", "WASD - Movimiento / Mouse - Mirar" },
             { "Tuto2", "Mouse 1 para atacar" },
-            { "Tuto3", "Recoge las vendas y curate" },
-            { "Tuto4", "puedes tomar el mate para recuperar estamina" },
-            { "Tuto5", "Recoge la munición" },
-            { "Tuto6", "SampleText" },
+            { "Tuto3", "Recoge las vendas - Presiona 2 para seleccionarlas" },
+            { "Tuto4", "Tomar mate recupera estamina - Presiona 1 para seleccionarlo" },
+            { "Tuto5", "Presiona la C para cambiar de arma. Recargala con la R" },
+            { "Tuto6", "Debo buscar la bateria del auto" },
             { "Tuto7", "SampleText" },
-            { "Tuto8", "SampleText" },
+            { "Tuto8", "Debo llegar a ese helicoptero" },
             { "Tuto9", "SampleText" }
         };
     }

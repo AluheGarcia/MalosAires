@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Juan Ojeda/Scenes/Menu Inicio.unity
     guid: 1c6f77f3e27487f4998aef9543a24797
+  - enabled: 1
+    path: Assets/FiinalScenes/Intro.unity
+    guid: c59e7239c56b2d745976dff3cf00359a
   - enabled: 0
     path: Assets/Matt/Scenes/SubwayLineB.unity
     guid: c9d2fa8569db43e49b19a329a7dc2292
@@ -16,7 +19,7 @@ EditorBuildSettings:
     guid: 0a6a52cad8f596f43bbd9504e4196fc0
   - enabled: 1
     path: Assets/FiinalScenes/Level2.unity
-    guid: f85fe921e4173714195fb4dbc681966c
+    guid: 1f4e1d5e6dc9644478081e0cfe757d73
   - enabled: 1
     path: Assets/FiinalScenes/Level3.unity
     guid: 569ae82f71e15ed4a99e8fdf4ab50f0b

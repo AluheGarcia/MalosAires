@@ -100,7 +100,7 @@ public class LifeCountScript : MonoBehaviour
     {
         
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu Inicio");
+        SceneManager.LoadScene("Intro");
     }
 
 }

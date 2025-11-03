@@ -116,12 +116,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Stamina.IsSprinting && walking)
             {
-                moveSpeed = 4;
+                moveSpeed = 4.5f;
                 model.GetComponent<PlayerAnimController>().Sprint();
             }
             else if (walking)
             {
-                moveSpeed = 1.5f;
+                moveSpeed = 3f;
                 model.GetComponent<PlayerAnimController>().Walking();
             }
             else if (sidewalk)
@@ -130,7 +130,8 @@ public class PlayerMovement : MonoBehaviour
                 model.GetComponent<PlayerAnimController>().WalkingRight();
             }
             else if (verticalInput < 0)
-            {                
+            {
+                moveSpeed = 3f;
                 model.GetComponent<PlayerAnimController>().WalkingBack();
             }
             else if (verticalInput == 0)
