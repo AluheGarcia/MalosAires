@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DetectionArea : MonoBehaviour
 {
+    public AudioSource zombieDetect;
     private SphereCollider detectionCollider;
     void Start()
     {
@@ -17,6 +18,7 @@ public class DetectionArea : MonoBehaviour
         {
             float radius = detectionCollider.radius * Mathf.Max(transform.lossyScale.x, transform.lossyScale.y, transform.lossyScale.z);
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+            zombieDetect.Play();
 
             foreach (var hitCollider in hitColliders)
             {
@@ -24,6 +26,7 @@ public class DetectionArea : MonoBehaviour
                 if (enemy != null)
                 {
                     enemy.StartAttacking(other.gameObject);
+
                 }
             }
         }
