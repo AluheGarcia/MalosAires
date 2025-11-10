@@ -24,7 +24,7 @@ public class MateScript : Item, IUsable
             }
 
 
-            KeyCode assignedKey = GetAssignKey();
+            KeyCode assignedKey = itemData.AssignKey;
 
             if (inventory.Inventory.ContainsKey(assignedKey))
             {
@@ -46,9 +46,9 @@ public class MateScript : Item, IUsable
         if (SipsAmount <= 0)
         {
            
-            if (inventory.Inventory.ContainsKey(AssignKey))
+            if (inventory.Inventory.ContainsKey(itemData.AssignKey))
             {
-               inventory.Inventory[AssignKey].HasItem = false;
+               inventory.Inventory[itemData.AssignKey].HasItem = false;
                 gameObject.SetActive(false);
             }
            

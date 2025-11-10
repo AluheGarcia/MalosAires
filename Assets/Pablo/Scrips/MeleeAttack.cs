@@ -21,8 +21,7 @@ public class MeleeAttack : MonoBehaviour
         {
 
             nextFireTime = Time.time + fireRate;
-
-            Instantiate(Attack, AttackDirection.transform);          
+            
             model.GetComponent<PlayerAnimController>().Attack();
 
             if (knifeScript != null)

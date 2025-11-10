@@ -149,10 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f820c1769fdf04b43b424fb457b5ad0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: 4e0b82cafc618ea45b1dac0444c11cee, type: 2}
   ItemRb: {fileID: 6775273338740261774}
-  ItemPrefab: {fileID: 856829370383174938}
-  ItemName: Ammo
-  ItemSprite: {fileID: 21300000, guid: 6f8548bbcc107ff4a9f6aad5d2829622, type: 3}
-  AssignKey: 51
   AmmoAmount: 12
   BulletPrefab: {fileID: 75919189607759499, guid: 5b22417495746554ba4fd7385572d1cc, type: 3}

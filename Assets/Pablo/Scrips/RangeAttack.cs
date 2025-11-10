@@ -11,8 +11,7 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject player;
     [SerializeField] private GunScript gunScript;
-
-    [SerializeField] private GameObject crosshair;
+   
     [SerializeField] private TMP_Text ammoDisplay;
 
     private bool aiming;
@@ -21,9 +20,7 @@ public class RangeAttack : MonoBehaviour
     private float nextFireTime = 0f;
 
     private void OnEnable()
-    {
-        if (crosshair != null)
-            crosshair.SetActive(true);
+    {        
         if (ammoDisplay != null)
         {
             StartCoroutine(FadeInText(ammoDisplay, 0.5f));
@@ -32,9 +29,7 @@ public class RangeAttack : MonoBehaviour
 
     private void OnDisable()
     {
-        if (crosshair != null)
-            crosshair.SetActive(false);
-
+       
         if (ammoDisplay != null)
         {
             StartCoroutine(FadeOutText(ammoDisplay, 0.5f));

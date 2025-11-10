@@ -40,7 +40,7 @@ public class BandageScript : Item , IUsable
                 AudioSource.PlayClipAtPoint(Bandage, user.transform.position, 1f);
             }
 
-            KeyCode assignedKey = GetAssignKey();
+            KeyCode assignedKey = itemData.AssignKey;
 
             if (inventory.Inventory.ContainsKey(assignedKey))
             {

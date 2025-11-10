@@ -102,11 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24a571fa718ac04cbcc0d322476c681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: 38cffb2eb2e7bcc4c8b8f8ae8dfdb738, type: 2}
   ItemRb: {fileID: 6176393162261035165}
-  ItemPrefab: {fileID: 8659313258486293146}
-  ItemName: Bandage
-  ItemSprite: {fileID: 21300000, guid: 21ce0de8b5696f448b5431806b5aa149, type: 3}
-  AssignKey: 50
   Bandage: {fileID: 8300000, guid: 2f7b7f130e7b04e4d9290ef625bbc975, type: 3}
 --- !u!54 &6176393162261035165
 Rigidbody:

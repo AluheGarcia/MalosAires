@@ -10,8 +10,7 @@ public class InventoryBehaviour : MonoBehaviour
 
 
     [SerializeField] private Transform RightHand;
-    [SerializeField] private List<GameObject> ItemPrefabs;
-    [SerializeField] private List<KeyCode> ItemKeyLog;
+    [SerializeField] private List<ItemData> ItemsData;    
     [SerializeField] private bool ItemInRange = false;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private GameObject NearItem;
@@ -26,29 +25,22 @@ public class InventoryBehaviour : MonoBehaviour
     public Dictionary<KeyCode, InventorySlot> Inventory = new Dictionary<KeyCode, InventorySlot>();
     private KeyCode equippedKey = KeyCode.None;
     public KeyCode EquippedKey => equippedKey;
-    public Transform rightHand => RightHand;
-    public List<GameObject> itemPrefabs => ItemPrefabs;
-    public List<KeyCode> itemKeyLog => ItemKeyLog;
+    public Transform rightHand => RightHand;    
 
 
     void Start()
     {
-        Inventory[KeyCode.Alpha1] = new InventorySlot(ItemPrefabs[0]) { HasItem = false };
-        Inventory[KeyCode.Alpha2] = new InventorySlot(ItemPrefabs[1]) { HasItem = false };
-        Inventory[KeyCode.WheelDown] = new InventorySlot(ItemPrefabs[2]) { HasItem = false };
-        Inventory[KeyCode.Alpha0] = new InventorySlot(ItemPrefabs[3]) { HasItem = false };
+        Inventory.Clear();
+        foreach (var data in ItemsData)
+        {           
+            Inventory[data.AssignKey] = new InventorySlot(data) 
+            {
+                HasItem = (data.ItemName == "Knife" ||  data.ItemName == "Revolver")
+            };
+        }
         equippedItemHUD = FindAnyObjectByType<EquippedItemHUD>();
 
-        foreach (var slot in Inventory.Values)
-        {
-
-            if (slot.itemPrefab.name == "Knife" || slot.itemPrefab.name == "Revolver")
-            {
-                slot.HasItem = true;
-            }
-        }
-
-
+        
     }
 
 
@@ -83,7 +75,7 @@ public class InventoryBehaviour : MonoBehaviour
             Item item = NearItem.GetComponent<Item>();
             if (item == null) return;
 
-            KeyCode assignKey = item.GetAssignKey();
+            KeyCode assignKey = item.itemData.AssignKey;
 
             AmmoScript ammoBox = NearItem.GetComponent<AmmoScript>();
             if (ammoBox != null)
@@ -94,8 +86,8 @@ public class InventoryBehaviour : MonoBehaviour
                 {
                     playerAmmo.AddAmmo(ammoBox.ammoAmount);
                     GetComponent<MenuManagment>()?.AddItemToInventory(
-                       item.itemName,
-                       item.itemSprite);
+                       item.itemData.ItemName,
+                       item.itemData.ItemSprite);
                     Destroy(NearItem);
                     NearItem = null;
                     return;
@@ -104,7 +96,7 @@ public class InventoryBehaviour : MonoBehaviour
 
             if (Inventory.ContainsKey(assignKey))
             {
-                if (Inventory[assignKey].HasItem && item.itemName == "Bandage")
+                if (Inventory[assignKey].HasItem && item.itemData.ItemName == "Bandage")
                 {
                     return;
                 }
@@ -124,8 +116,8 @@ public class InventoryBehaviour : MonoBehaviour
                     }
 
                     GetComponent<MenuManagment>()?.AddItemToInventory(
-                        item.itemName,
-                        item.itemSprite);
+                        item.itemData.ItemName,
+                        item.itemData.ItemSprite);
 
                     NearItem.SetActive(false);
                     NearItem = null;
@@ -138,8 +130,8 @@ public class InventoryBehaviour : MonoBehaviour
                 if (!Inventory.ContainsKey(assignKey))
                 {
                     GetComponent<MenuManagment>()?.AddItemToInventory(
-                        item.itemName,
-                        item.itemSprite);
+                        item.itemData.ItemName,
+                        item.itemData.ItemSprite);
 
                     NearItem.SetActive(false);
                     NearItem = null;
@@ -161,7 +153,7 @@ public class InventoryBehaviour : MonoBehaviour
                     Destroy(child.gameObject);
 
 
-                equippedItem = Instantiate(entry.Value.itemPrefab, RightHand);
+                equippedItem = Instantiate(entry.Value.itemData.ItemPrefab, RightHand);
                 equippedItem.transform.localPosition = Vector3.zero;
                 equippedItem.transform.localRotation = Quaternion.identity;
 
@@ -174,8 +166,7 @@ public class InventoryBehaviour : MonoBehaviour
                 Item itemScript = equippedItem.GetComponent<Item>();
                 if (itemScript != null)
                 {
-                    itemScript.SetInventory(this);
-                    itemScript.SetPrefab(entry.Value.itemPrefab);
+                    itemScript.SetInventory(this);                    
 
                     int amount = 1;
 
@@ -202,7 +193,7 @@ public class InventoryBehaviour : MonoBehaviour
 
                     if (equippedItemHUD != null)
                     {
-                        equippedItemHUD.UpdateDisplay(itemScript.itemSprite, amount);
+                        equippedItemHUD.UpdateDisplay(entry.Value.itemData.ItemSprite, amount);
                     }
 
                 }
@@ -223,18 +214,17 @@ public class InventoryBehaviour : MonoBehaviour
 
             if (itemComp != null)
             {
-                KeyCode assignKey = itemComp.GetAssignKey();
+                KeyCode assignKey = itemComp.itemData.AssignKey;
 
                 if (Inventory.ContainsKey(assignKey))
                 {
                     Inventory[assignKey].HasItem = false;
-                }
-                Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
+                }               
             }
 
-            GameObject droppedItem = Instantiate(itemComp.itemPrefab, dropPos, Quaternion.identity);
+            GameObject droppedItem = Instantiate(itemComp.itemData.ItemPrefab, dropPos, Quaternion.identity);
 
-            GetComponent<MenuManagment>()?.RemoveItemFromInventory(itemComp.itemName);
+            GetComponent<MenuManagment>()?.RemoveItemFromInventory(itemComp.itemData.ItemName);
             equippedItem.SetActive(false);
             equippedItem = null;
 
@@ -246,7 +236,7 @@ public class InventoryBehaviour : MonoBehaviour
         foreach (var slot in Inventory.Values)
         {
 
-            if (slot.itemPrefab == prefab && slot.HasItem)
+            if (slot.itemData.ItemPrefab == prefab && slot.HasItem)
                 return true;
         }
         return false;
@@ -311,12 +301,12 @@ public class InventoryBehaviour : MonoBehaviour
     [System.Serializable]
     public class InventorySlot
     {
-        public GameObject itemPrefab;
+        public ItemData itemData;
         public bool HasItem;
         public int itemAmount;
-        public InventorySlot(GameObject prefab)
+        public InventorySlot(ItemData data)
         {
-            itemPrefab = prefab;
+            itemData = data;
             HasItem = false;
             itemAmount = 0;
         }

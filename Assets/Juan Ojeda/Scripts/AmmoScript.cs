@@ -34,7 +34,7 @@ public class AmmoScript :Item, IUsable
             {
                 inventory.UpdateInventoryDis("Ammo", itemSprite, 0);
 
-                KeyCode assignedKey = GetAssignKey();
+                KeyCode assignedKey = itemData.AssignKey;
                 if (inventory.Inventory.ContainsKey(assignedKey))
                 {
                     inventory.Inventory[assignedKey].HasItem = false;

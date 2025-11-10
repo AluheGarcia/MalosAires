@@ -150,11 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b86893c02abc040a4f3331a091ace6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemData: {fileID: 11400000, guid: b65fb2349f1d6da41a0394345f61c3b8, type: 2}
   ItemRb: {fileID: 428474739738526322}
-  ItemPrefab: {fileID: 5526110482708239567}
-  ItemName: Mate
-  ItemSprite: {fileID: 21300000, guid: 0e17ad38fbf658e4fa37adfa69ba72b7, type: 3}
-  AssignKey: 49
   SipsAmount: 7
   audioSource: {fileID: 403667503640752087}
   drinkSound: {fileID: 8300000, guid: 796ae9033e66f5144831c497742f0c74, type: 3}

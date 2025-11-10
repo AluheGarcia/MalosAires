@@ -7,43 +7,21 @@ using UnityEngine.UI;
 
 public abstract class Item : MonoBehaviour
 {
-
+    [SerializeField] protected ItemData _itemData;
+    public ItemData itemData => _itemData;
     [SerializeField] protected Rigidbody ItemRb;
-    [SerializeField] private GameObject ItemPrefab;
-    [SerializeField] private string ItemName;
-    [SerializeField] private Sprite ItemSprite;
     
-    [SerializeField] protected KeyCode AssignKey;
-
     protected bool PlayerInRange = false;
     protected InventoryBehaviour inventory;   
     public InventoryBehaviour inv => inventory;    
 
-    public GameObject itemPrefab => ItemPrefab;
-    public Sprite itemSprite => ItemSprite;
-    public string itemName => ItemName;
+    public GameObject itemPrefab => itemData.ItemPrefab;
+    public Sprite itemSprite => itemData.ItemSprite;
+    public string itemName => itemData.ItemName;
+    public KeyCode assignKey => itemData.AssignKey;
 
 
 
-    public KeyCode GetAssignKey()
-    {
-        return AssignKey;
-    }
-
-    public GameObject GetPrefab()
-    {
-        return ItemPrefab;
-    }
-
-    public string GetName()
-    {
-        return ItemName;
-    }
-
-    public Sprite GetSprite()
-    {
-        return ItemSprite;
-    }
 
     public void OnTriggerEnter(Collider other)
     {
