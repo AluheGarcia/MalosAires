@@ -90,4 +90,18 @@ public class PlayerAnimController : MonoBehaviour
         anim.SetBool("Switch", false);
         player.GetComponent<PlayerMovement>().NotSwitching();
     }
+
+    public void Reload()
+    {
+        anim.SetBool("Reload", true);
+        Invoke("StopReload", 1.25f);
+        player.GetComponent<PlayerMovement>().Reloading();
+
+    }
+
+    public void StopReload()
+    {
+        anim.SetBool("Reload", false);
+        player.GetComponent<PlayerMovement>().StopReloading();
+    }
 }

@@ -14,11 +14,11 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Daño al player por Enemy");
         }
 
-        if (collision.gameObject.CompareTag("EnemyExp"))
+     //   if (collision.gameObject.CompareTag("EnemyExp"))
         {
-            life.TakeHit(); 
+      //      life.TakeHit(); 
             
-            Debug.Log("Daño doble al player por EnemyExp");
+     //       Debug.Log("Daño doble al player por EnemyExp");
         }
     }
 }

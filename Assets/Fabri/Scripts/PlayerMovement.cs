@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private bool walkingBack;
     private bool sidewalk;
     private bool switching;
+    private bool reloading;
 
     Vector3 moveDirection;
 
@@ -112,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (!attacking && !aiming && !switching)
+        if (!attacking && !aiming && !switching && !reloading)
         {
             if (Stamina.IsSprinting && walking)
             {
@@ -183,9 +184,21 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = 1.5f;
     }
 
+    public void Reloading()
+    {
+        reloading = true;
+    }
+
+    public void StopReloading()
+    {
+        reloading = false;
+    }
+
+    public
 
 
-    private void FixedUpdate()
+
+     void FixedUpdate()
     {
         CheckForStep();
         MovePlayer();

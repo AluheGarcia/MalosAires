@@ -15,6 +15,7 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private GameObject crosshair;
     [SerializeField] private TMP_Text ammoDisplay;
 
+    private bool reloading;
     private bool aiming;
 
     
@@ -112,7 +113,15 @@ public class RangeAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             gunScript.Reload();
+            model.GetComponent<PlayerAnimController>().Reload();
+
+            reloading = true;
         }
+    }
+
+    public void StopReloading()
+    {
+        reloading = false;
     }
 
     public void UpdateAmmoUI()
